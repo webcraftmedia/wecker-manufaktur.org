@@ -1,0 +1,1 @@
+INSERT INTO `system_cron` (`class`, `min`, `hour`, `day`, `day_week`, `month`, `last_run`, `status`) VALUES ('cron_calculate_votes', 0, 0, 1, 0, 0, NULL, 0);

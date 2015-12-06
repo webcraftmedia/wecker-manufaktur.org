@@ -1,0 +1,76 @@
+body {
+}
+
+#headbanner_frame {
+    width: 55%;
+    max-height: 35%;
+    margin: auto;
+    background: white;
+}
+
+#headbanner {
+    font-family: fantasy;
+    padding-left: 25px;
+    box-shadow: 0 0px 0px 0px white, 0 0px 0px 0px white, 5px 0 5px -4px rgba(102, 102, 102, 0.8), -5px 0 5px -5px rgba(102, 102, 102, 0.8);
+}
+
+#menu {
+    width: 100%;
+    background: #cc3333;
+}
+
+#menu_content {
+    font-family: Arial;
+    font-size: 16pt;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#menu_content a:visited{
+    text-decoration: none;
+    color: white;
+}
+
+#menu_content a:hover{
+    text-decoration: none;
+    text-shadow: 1px 0px white;
+}
+
+#menu_content a:link{
+    text-decoration: none;
+    color: white;
+}
+
+#content {
+    background: white;
+    width: 55%;
+    padding: 25px;
+    margin: auto;
+    color: #666666;
+    box-shadow: 0 0px 0px 0px white, 0 0px 0px 0px white, 5px 0 5px -4px rgba(102, 102, 102, 0.8), -5px 0 5px -5px rgba(102, 102, 102, 0.8);
+}
+
+#footer { 
+    height: 20px;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    background: #666666;
+    color: white;
+}
+
+#footer a:link{
+    text-decoration: none;
+    color: white;
+}
+
+#footer a:visited{
+    text-decoration: none;
+    color: white;
+}
