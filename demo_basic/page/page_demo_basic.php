@@ -8,12 +8,12 @@ class page_demo_basic extends \SYSTEM\API\api_default {
     public static function default_page($_escaped_fragment_ = null){
         return (new default_page())->html($_escaped_fragment_);}
     
-    public static function page_start($tag = null, $id = null){
-        return (new default_start($tag,$id))->html();}
+    public static function page_start(){
+        return (new default_start())->html();}
     
-    public static function page_blog($tag = null, $id = null){
-        return (new default_blog($tag,$id))->html();}
+    public static function page_about(){
+        return (new default_about())->html();}
     
     public static function page_impressum(){
-        return (new default_impressum(''))->html();}
+        return (new default_impressum())->html();}
 }
