@@ -1,5 +1,9 @@
 <?php
-class default_about extends SYSTEM\PAGE\Page {
+class default_about implements SYSTEM\PAGE\Page {
+    public static function title(){
+        return \SYSTEM\PAGE\text::get('title_about');}
+    public static function meta(){
+        return \SYSTEM\PAGE\text::tag('meta_about');}
     public static function js(){
         return array(   new PPAGE('default_about/js/default_about.js'));}
     public static function css(){
