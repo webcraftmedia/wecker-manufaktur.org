@@ -1,6 +1,6 @@
 <?php
 require_once 'lib/autoload.inc';                                                //SYSTEM Classes
-require_once 'demo_basic/autoload.inc';                                         //Project Classes
+require_once 'wecker_manufaktur/autoload.inc';                                         //Project Classes
 require_once 'config.php';
 
 // Start SYSTEM

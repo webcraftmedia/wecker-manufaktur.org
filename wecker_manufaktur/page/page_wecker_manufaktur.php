@@ -1,5 +1,5 @@
 <?php
-class page_demo_basic extends \SYSTEM\API\api_default {
+class page_wecker_manufaktur extends \SYSTEM\API\api_default {
     public static function get_apigroup(){
         return 1;}
     public static function get_class($params = null){

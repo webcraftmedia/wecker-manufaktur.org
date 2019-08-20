@@ -10,7 +10,7 @@ function config($basepath){
                     array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_DB_USER,               'db_user'),
                     array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_DB_PASSWORD,           'db_pw'),
                     array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_DB_DBNAME,             'db_name'),
-                    array(\SYSTEM\CONFIG\config_ids::SYS_SAI_CONFIG_PROJECT,           'demo_basic'),
+                    array(\SYSTEM\CONFIG\config_ids::SYS_SAI_CONFIG_PROJECT,           'wecker_manufaktur'),
                     array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_PATH_SYSTEMPATHREL,    'lib/system/'),
 					array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_PATH_CACHE,    	       $basepath.'/cache/'),
                     array(\SYSTEM\CONFIG\config_ids::SYS_CONFIG_LANGS,                 array('deDE','enUS')),

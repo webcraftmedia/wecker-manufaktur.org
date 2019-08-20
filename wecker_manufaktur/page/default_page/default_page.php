@@ -22,7 +22,7 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         if(!$_escaped_fragment_){
             $vars['js'] = self::js();}
         $vars['css'] = self::css();
-        $vars = array_merge($vars,  \SYSTEM\PAGE\text::tag('demo_basic'));
+        $vars = array_merge($vars,  \SYSTEM\PAGE\text::tag('wecker_manufaktur'));
         return SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/default_page.tpl'))->SERVERPATH(), $vars);
     }
 }
