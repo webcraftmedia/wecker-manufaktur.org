@@ -1,0 +1,115 @@
+// Colors
+$color_white: rgb(255,255,255);
+$color_grey: rgba(255,255,255,0.37);
+$color_black: rgb(0,0,0);
+$color_green_1: rgb(12,22,11);
+$color_green_2: rgb(21,26,16);
+$color_green_3: rgb(29,48,25);
+
+// Paddings & Margins
+$padding_page: 100px;
+$padding_heading_top:    100px;
+$padding_heading_bottom: 50px;
+$padding_footer: 25px;
+$padding_footer_bottomline: 10px;
+
+// Images
+$home_img: url(./files/img/wecker_manufaktur.jpg);
+
+// Font Size
+$font_size_50: 50px;
+$font_size_70: 70px;
+
+
+body {
+    color: $color_white;
+}
+
+.page {
+    min-height: 100vh;
+    overflow-y: hidden;
+}
+
+.nav-link {
+    color: $color_white !important;
+}
+
+#menu {
+    padding-left: $padding_page;
+    padding-right: $padding_page;
+}
+
+#home {
+    background-image: $home_img;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: $padding_page;
+    padding-right: $padding_page;
+
+    h1{
+        display: flex;
+        flex: 1 0 auto;
+        align-self: center;
+        align-items: center;
+        font-size: $font_size_70;
+    }
+
+    a{
+        font-size: $font_size_50;
+        color: $color_grey;
+        margin-top: -25px;
+        margin-bottom: -20px;
+    }
+}
+
+#content {
+    background-image: linear-gradient($color_green_1,$color_green_3);
+    text-align: center;
+    padding-left: $padding_page;
+    padding-right: $padding_page;
+
+    #philosophy{
+        h2{
+            padding-top: $padding_heading_top;
+            padding-bottom: $padding_heading_bottom;
+        }
+    }
+
+    #persons{
+        padding-top: $padding_heading_top;
+        padding-bottom: $padding_heading_bottom;
+    }
+
+    #projects{
+        h2{
+            padding-top: $padding_heading_top;
+            padding-bottom: $padding_heading_bottom;
+        }
+    }
+
+    #apply{
+        h2{
+            padding-top: $padding_heading_top;
+            padding-bottom: $padding_heading_bottom;
+        }
+        padding-bottom: $padding_heading_bottom;
+    }
+}
+
+#footer-links {
+    background-color: $color_green_2;
+    padding-left: $padding_page;
+    padding-right: $padding_page;
+    padding-top: $padding_footer;
+    padding-bottom: $padding_footer;
+}
+
+#footer-bottomline {
+    background-color: $color_black;
+    padding: $padding_footer_bottomline;
+    padding-left: $padding_page;
+    padding-right: $padding_page;
+    text-align: center;
+}
