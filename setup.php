@@ -1,4 +1,4 @@
 <?php
-include 'index.inc';
+include 'autoload.inc';
 
 echo \SYSTEM\SQL\setup::install();
