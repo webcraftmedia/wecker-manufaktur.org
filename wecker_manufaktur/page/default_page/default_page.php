@@ -41,9 +41,9 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
                 $project['link']    = $project['visible'] != 1 ? $project['website'] : '#project-'.$project['project']; 
                 $project['target']  = $project['visible'] != 1 ? '_blank' : ''; 
                 $row['projects'] .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person_project.tpl'))->SERVERPATH(),$project);
-                $row['projects'] .= ', ';
+                $row['projects'] .= ' | ';
             }
-            $row['projects'] = substr($row['projects'],0,-2);
+            $row['projects'] = substr($row['projects'],0,-3);
 
             $_content_imgs      .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person_img.tpl'))->SERVERPATH(),$row);
             $_content_details   .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person_details.tpl'))->SERVERPATH(),$row);

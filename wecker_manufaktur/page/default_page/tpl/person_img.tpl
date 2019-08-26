@@ -1,5 +1,5 @@
-<div class="col-lg-4">
-    <a id="person-${id}" href="#person-details-${id}" person="${id}" class="person-link">
+<div id="person-${id}" class="col-lg-4 person">
+    <a id="person-img-${id}" href="#person-details-${id}" person="${id}" class="person-link">
         <div>
             <img src="./files/persons/${img}" class="rounded-circle" alt="${name}" style="object-fit: cover; width: 300px; height: 300px;">
         </div>

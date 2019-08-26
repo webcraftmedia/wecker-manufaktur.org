@@ -80,12 +80,20 @@ body {
     #persons{
         padding-top: $padding_heading_top;
         padding-bottom: $padding_heading_bottom;
+
+        .person.disabled{
+            filter: grayscale(100%);
+        }
     }
 
     #projects{
         h2{
             padding-top: $padding_heading_top;
             padding-bottom: $padding_heading_bottom;
+        }
+
+        .project.disabled{
+            filter: grayscale(100%);
         }
     }
 
