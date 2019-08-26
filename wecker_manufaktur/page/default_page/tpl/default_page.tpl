@@ -48,7 +48,7 @@
         <!-- HOME -->
         <section id="home" class="fullpage">
             <h1>${page_title}</h1>
-            <h4 style="align-self: bottom">${page_statement}</h4>
+            <h4>${page_statement}</h4>
             <a href="#philosophy"><i class="fa fa-angle-down"></i></a>            
         </section>
         <!-- CONTENT -->

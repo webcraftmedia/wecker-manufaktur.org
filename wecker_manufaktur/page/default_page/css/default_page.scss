@@ -56,6 +56,10 @@ body {
         font-size: $font_size_70;
     }
 
+    h4 {
+        align-self: bottom;
+    }
+
     a{
         font-size: $font_size_50;
         color: $color_grey;
@@ -81,8 +85,19 @@ body {
         padding-top: $padding_heading_top;
         padding-bottom: $padding_heading_bottom;
 
-        .person.disabled{
-            filter: grayscale(100%);
+        .person {
+            img {
+                object-fit: cover;
+                width: 300px;
+                height: 300px;
+            }
+            .disabled{
+                filter: grayscale(100%);
+            }
+        }
+
+        .person-details{
+            text-align: left;
         }
     }
 
@@ -92,17 +107,43 @@ body {
             padding-bottom: $padding_heading_bottom;
         }
 
-        .project.disabled{
-            filter: grayscale(100%);
+        .project{
+            img {
+                object-fit: cover;
+                width: 300px;
+                height: 300px;
+            }
+            .disabled{
+                filter: grayscale(100%);
+            }
+        }
+
+        .project-details{
+            text-align: left;
+
+            img {
+                object-fit: cover;
+                width: 75px;
+                height: 75px;
+            }
         }
     }
 
     #apply{
-        h2{
+        h2 {
             padding-top: $padding_heading_top;
             padding-bottom: $padding_heading_bottom;
         }
         padding-bottom: $padding_heading_bottom;
+    }
+
+    .table-condensed {
+        th{
+            width: 1%;
+        }
+        td {
+            width: auto;
+        }
     }
 }
 
