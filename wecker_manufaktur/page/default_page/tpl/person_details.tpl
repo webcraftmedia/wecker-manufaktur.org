@@ -11,7 +11,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Projekte</th>
-                    <td>TODO</td>
+                    <td>${projects}</td>
                 </tr>
             </table>
         </div>

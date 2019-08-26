@@ -1,0 +1,1 @@
+<a href="${link}" target="${target}" class="person-project-link" project="${project}">${name}</a>
