@@ -28,6 +28,6 @@ class SELECT_PERSON_BADGES extends \SYSTEM\DB\QQ {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'SELECT * FROM `person_badges`';
+        'SELECT * FROM `person_badges` WHERE `visible` = 1 ORDER BY `order`';
     }    
 }

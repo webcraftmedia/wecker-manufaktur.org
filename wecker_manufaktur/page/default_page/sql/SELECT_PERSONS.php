@@ -28,6 +28,6 @@ class SELECT_PERSONS extends \SYSTEM\DB\QQ {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'SELECT * FROM `persons` ORDER BY `order`';
+        'SELECT * FROM `persons` WHERE `visible` = 1 ORDER BY `order`';
     }    
 }
