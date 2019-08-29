@@ -14,7 +14,7 @@ namespace SQL;
 /**
  * QQ to get System Api Tree by group
  */
-class SELECT_PERSON_BADGES extends \SYSTEM\DB\QQ {
+class SELECT_BADGES extends \SYSTEM\DB\QP {
     /**
      * Get Classname of the QQ
      * 
@@ -28,6 +28,6 @@ class SELECT_PERSON_BADGES extends \SYSTEM\DB\QQ {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'SELECT * FROM `person_badges` WHERE `visible` = 1 ORDER BY `order`';
+        'SELECT * FROM `badges` WHERE `type` = ? AND `visible` = 1 ORDER BY `order`';
     }    
 }

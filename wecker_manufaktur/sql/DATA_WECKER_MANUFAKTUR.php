@@ -6,10 +6,8 @@ class DATA_WECKER_MANUFAKTUR extends \SYSTEM\DB\QI {
         return array(   (new \PSQL('/mysql/system_page.sql'))->SERVERPATH(),
                         (new \PSQL('/mysql/system_text.sql'))->SERVERPATH(),
                         (new \PSQL('/mysql/persons.schema.sql'))->SERVERPATH(),
-                        (new \PSQL('/mysql/person_badges.schema.sql'))->SERVERPATH(),
+                        (new \PSQL('/mysql/badges.schema.sql'))->SERVERPATH(),
                         (new \PSQL('/mysql/projects.schema.sql'))->SERVERPATH(),
-                        (new \PSQL('/mysql/projects_focus.schema.sql'))->SERVERPATH(),
-                        (new \PSQL('/mysql/projects_type.schema.sql'))->SERVERPATH(),
                         (new \PSQL('/mysql/person_projects.schema.sql'))->SERVERPATH());
     }    
 }
