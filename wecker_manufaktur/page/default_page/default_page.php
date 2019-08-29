@@ -17,10 +17,6 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
                 )));
     }
 
-    const BADGE_TYPE_PERSON_ABILITIES   = 1;
-    const BADGE_TYPE_PROJECT_FOCUS      = 10;
-    const BADGE_TYPE_PROJECT_TYPE       = 11;
-
     private static function getPersons(){
         $result = '';
 
@@ -29,14 +25,14 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         $_content_details   = '';
 
         $persons        = \SQL\SELECT_PERSONS::QQ();
-        $person_badges  = \SQL\SELECT_BADGES::QA(array(self::BADGE_TYPE_PERSON_ABILITIES));   // This part we filter phpside due to performance.
+        $person_badges  = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PERSON_ABILITIES));   // This part we filter phpside due to performance.
         $person_projects= \SQL\SELECT_PERSON_PROJECTS::QA();                                  // This part we filter phpside due to performance.
         while($row = $persons->next()){
 
             $badges = array_filter($person_badges, function($v)use($row){return $v['ref_id'] == $row['id'];});
             $row['badges'] = '';
             foreach($badges as $badge){
-                $row['badges'] .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_badge.tpl'))->SERVERPATH(),$badge);
+                $row['badges'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/content_badge.tpl'))->SERVERPATH(),$badge);
             }
 
             $projects = array_filter($person_projects, function($v)use($row){return $v['person'] == $row['id'];});
@@ -79,22 +75,22 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         $_content_imgs      = '';
         $_content_details   = '';
 
-        $projects       = \SQL\SELECT_PROJECTS::QQ();
-        $project_focus  = \SQL\SELECT_BADGES::QA(array(self::BADGE_TYPE_PROJECT_FOCUS)); // This part we filter phpside due to performance.
-        $project_type   = \SQL\SELECT_BADGES::QA(array(self::BADGE_TYPE_PROJECT_TYPE)); // This part we filter phpside due to performance.
-        $project_persons= \SQL\SELECT_PROJECT_PERSONS::QA();                                // This part we filter phpside due to performance.
+        $projects       = \SQL\SELECT_PROJECTS_VISIBLE::QQ();
+        $project_focus  = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PROJECT_FOCUS)); // This part we filter phpside due to performance.
+        $project_type   = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PROJECT_TYPE));  // This part we filter phpside due to performance.
+        $project_persons= \SQL\SELECT_PROJECT_PERSONS::QA();                                                    // This part we filter phpside due to performance.
         while($row = $projects->next()){
 
             $focus = array_filter($project_focus, function($v)use($row){return $v['ref_id'] == $row['id'];});
             $row['focus'] = '';
             foreach($focus as $f){
-                $row['focus'] .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_badge.tpl'))->SERVERPATH(),$f);
+                $row['focus'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/content_badge.tpl'))->SERVERPATH(),$f);
             }
 
             $type = array_filter($project_type, function($v)use($row){return $v['ref_id'] == $row['id'];});
             $row['type'] = '';
             foreach($type as $t){
-                $row['type'] .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_badge.tpl'))->SERVERPATH(),$t);
+                $row['type'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/content_badge.tpl'))->SERVERPATH(),$t);
             }
 
             $persons = array_filter($project_persons, function($v)use($row){return $v['project'] == $row['id'];});
