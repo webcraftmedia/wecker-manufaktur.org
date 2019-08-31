@@ -82,6 +82,69 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
         return \SYSTEM\LOG\JsonResult::ok();
     }
 
+    public static function sai_mod__SAI_saimod_project_action_project_details($project){
+        // $vars = array();
+        $vars = \SQL\SELECT_PROJECT::Q1(array($project));
+
+        $vars['selected_invisible'] = $vars['visible'] !== 1 ? 'selected' : '';
+        $vars['selected_visible'] = $vars['visible'] == 1 ? 'selected' : '';
+
+        //images
+        $images = \SYSTEM\FILES\files::get('projects');
+        $vars['images'] = '';
+        foreach($images as $image){
+            $img = ['name' => $image, 'selected' => $vars['img'] == $image ? 'selected' : ''];
+            $vars['images'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_image_file.tpl'))->SERVERPATH(),$img);
+        }
+
+        // Focus
+        $vars['focus'] = '';
+        $focus = \SQL\SELECT_BADGES_PROJECT::QQ(array(self::BADGE_TYPE_PROJECT_FOCUS,$project));
+        while($row = $focus->next()){
+            $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
+            $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
+            
+            $row['badge_colors'] = self::badge_color_options($row['color']);
+            
+            $vars['focus'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_badge_tr.tpl'))->SERVERPATH(),$row);
+        }
+
+        // Type
+        $vars['type'] = '';
+        $type = \SQL\SELECT_BADGES_PROJECT::QQ(array(self::BADGE_TYPE_PROJECT_TYPE,$project));
+        while($row = $type->next()){
+            $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
+            $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
+            
+            $row['badge_colors'] = self::badge_color_options($row['color']);
+            
+            $vars['type'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_badge_tr.tpl'))->SERVERPATH(),$row);
+        }
+
+        $vars['badge_colors'] = self::badge_color_options();
+
+        return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_details.tpl'))->SERVERPATH(),$vars);
+    }
+
+    private static function badge_color_options($selected = null){
+        $colors = array(
+            'badge-primary',
+            'badge-secondary',
+            'badge-success',
+            'badge-danger',
+            'badge-warning',
+            'badge-info',
+            'badge-light',
+            'badge-dark'
+        );
+        $result = '';
+        foreach($colors as $color){
+            $vars = array('value' => $color, 'selected' => $color == $selected ? 'selected' : '');
+            $result .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/badge_color_option.tpl'))->SERVERPATH(),$vars);
+        }
+        return $result;
+    }
+
     public static function menu(){
         return new \SYSTEM\SAI\sai_module_menu( 101,
                                     \SYSTEM\SAI\sai_module_menu::POISITION_LEFT,

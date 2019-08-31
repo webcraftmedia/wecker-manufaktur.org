@@ -6,12 +6,13 @@ REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `na
 REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9010, 42, 2, 9000, 'project_delete', 'data', 'JSON');
 REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9020, 42, 2, 9000, 'project_order', 'data', 'JSON');
 REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9030, 42, 2, 9000, 'project_visibility', 'data', 'JSON');
+REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9040, 42, 2, 9000, 'project_details', 'project', 'UINT0');
+
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9030, 42, 2, 9000, 'contact', 'email', 'STRING');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9035, 42, 2, 9000, 'update_contact', 'data', 'JSON');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9037, 42, 2, 9000, 'insert_contact', 'data', 'JSON');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9039, 42, 2, 9000, 'delete_contact', 'data', 'JSON');
 
--- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9040, 42, 2, 9000, 'email', 'id', 'UINT0');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9043, 42, 2, 9000, 'send_email', 'data', 'JSON');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9045, 42, 2, 9000, 'update_email', 'data', 'JSON');
 -- REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (9047, 42, 2, 9000, 'insert_email', 'data', 'JSON');
