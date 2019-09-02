@@ -8,6 +8,7 @@
     <td style="font-size: 30px">
         <a href="#" class="project-order-up" project="${id}" order="${order}"><i class="fa fa-caret-up"></i></a>
         <a href="#" class="project-order-down" project="${id}" order="${order}"><i class="fa fa-caret-down"></i></a>
+        &nbsp;${order}
     </td>
     <td>
         <select class="project-visibility form-control" project="${id}">

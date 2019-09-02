@@ -14,7 +14,7 @@ namespace SQL;
 /**
  * QQ to get System Api Tree by group
  */
-class DELETE_BADGE extends \SYSTEM\DB\QP {
+class DELETE_BADGES extends \SYSTEM\DB\QP {
     /**
      * Get Classname of the QQ
      * 
@@ -28,6 +28,6 @@ class DELETE_BADGE extends \SYSTEM\DB\QP {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'DELETE FROM `badges` WHERE `id` = ?;';
+        'DELETE FROM `badges` WHERE `type` = ? AND `ref_id` = ?;';
     }    
 }

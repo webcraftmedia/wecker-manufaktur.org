@@ -53,8 +53,8 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
     public static function sai_mod__SAI_saimod_project_action_project_delete($data){
         foreach($data as $id){
             \SQL\DELETE_PROJECT::QI(array($id));
-            \SQL\DELETE_BADGE::QI(array(self::BADGE_TYPE_PROJECT_FOCUS,$id));
-            \SQL\DELETE_BADGE::QI(array(self::BADGE_TYPE_PROJECT_TYPE,$id));
+            \SQL\DELETE_BADGES::QI(array(self::BADGE_TYPE_PROJECT_FOCUS,$id));
+            \SQL\DELETE_BADGES::QI(array(self::BADGE_TYPE_PROJECT_TYPE,$id));
         }
         return \JsonResult::ok();
     }
@@ -64,13 +64,13 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
             case 'up':
                 $new_order = $data['order'] -1;
                 $new_order = $new_order > 0 ? $new_order : 1;
-                \SQL\UPDATE_PROJECTS_ORDER_DOWN_ORDER::QI(array($new_order));
-                \SQL\UPDATE_PROJECTS_ORDER_DOWN_ID::QI(array($project));
+                \SQL\UPDATE_PROJECT_ORDER_DOWN_ORDER::QI(array($new_order));
+                \SQL\UPDATE_PROJECT_ORDER_DOWN_ID::QI(array($project));
                 break;
             case 'down':
                 $new_order = $data['order'] +1;
-                \SQL\UPDATE_PROJECTS_ORDER_UP_ORDER::QI(array($new_order));
-                \SQL\UPDATE_PROJECTS_ORDER_UP_ID::QI(array($project));    
+                \SQL\UPDATE_PROJECT_ORDER_UP_ORDER::QI(array($new_order));
+                \SQL\UPDATE_PROJECT_ORDER_UP_ID::QI(array($project));    
                 break;
             default:
                 throw new \SYSTEM\LOG\ERROR('Operration not supported');
@@ -78,8 +78,32 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
         return \SYSTEM\LOG\JsonResult::ok();
     }
     public static function sai_mod__SAI_saimod_project_action_project_visibility($data){
-        \SQL\UPDATE_PROJECTS_VISIBILITY::QI(array($data['visibility'],$data['project']));
+        \SQL\UPDATE_PROJECT_VISIBILITY::QI(array($data['visibility'],$data['project']));
         return \SYSTEM\LOG\JsonResult::ok();
+    }
+
+    public static function sai_mod__SAI_saimod_project_action_project_new(){
+        $vars = array();
+        
+        //images
+        $images = \SYSTEM\FILES\files::get('projects');
+        $vars['images'] = '';
+        foreach($images as $image){
+            $img = ['name' => $image, 'selected' => ''];
+            $vars['images'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_image_file.tpl'))->SERVERPATH(),$img);
+        }
+
+        return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_new.tpl'))->SERVERPATH(),$vars);
+    }
+
+    public static function sai_mod__SAI_saimod_project_action_project_save($data){
+        return  \SYSTEM\LOG\JsonResult::status(
+            \SQL\INSERT_PROJECT::QI(array(  $data['img'],
+                                            $data['name'],
+                                            $data['info'],
+                                            $data['website'],
+                                            $data['visibility']))
+        );
     }
 
     public static function sai_mod__SAI_saimod_project_action_project_details($project){
@@ -117,13 +141,79 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
             
             $row['badge_colors'] = self::badge_color_options($row['color']);
-            
+
             $vars['type'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_badge_tr.tpl'))->SERVERPATH(),$row);
         }
 
         $vars['badge_colors'] = self::badge_color_options();
 
         return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_details.tpl'))->SERVERPATH(),$vars);
+    }
+
+    public static function sai_mod__SAI_saimod_project_action_project_update($data){
+        return  \SYSTEM\LOG\JsonResult::status(
+            \SQL\UPDATE_PROJECT::QI(array(  $data['img'],
+                                            $data['name'],
+                                            $data['info'],
+                                            $data['website'],
+                                            $data['visibility'],
+                                            $data['project']))
+        );
+    }
+
+    public static function sai_mod__SAI_saimod_project_action_project_focus_new($data){
+        return  \SYSTEM\LOG\JsonResult::status(
+                    \SQL\INSERT_BADGE::QI(array(self::BADGE_TYPE_PROJECT_FOCUS,
+                                                $data['project'],
+                                                $data['badge'],
+                                                $data['color'],
+                                                self::BADGE_TYPE_PROJECT_FOCUS,
+                                                $data['project'],
+                                                $data['visibility']))
+                );
+    }
+    public static function sai_mod__SAI_saimod_project_action_project_type_new($data){
+        return  \SYSTEM\LOG\JsonResult::status(
+                    \SQL\INSERT_BADGE::QI(array(self::BADGE_TYPE_PROJECT_TYPE,
+                                                $data['project'],
+                                                $data['badge'],
+                                                $data['color'],
+                                                self::BADGE_TYPE_PROJECT_TYPE,
+                                                $data['project'],
+                                                $data['visibility']))
+                );
+    }
+
+    public static function sai_mod__SAI_saimod_project_action_badge_visibility($data){
+        \SQL\UPDATE_BADGE_VISIBILITY::QI(array($data['visibility'],$data['badge']));
+        return \SYSTEM\LOG\JsonResult::ok();
+    }
+    public static function sai_mod__SAI_saimod_project_action_badge_order($data){
+        $badge = $data['badge'];
+        $type = $data['type'];
+        $ref_id = $data['ref_id'];
+        switch($data['action']){
+            case 'up':
+                $new_order = $data['order'] -1;
+                $new_order = $new_order > 0 ? $new_order : 1;
+                \SQL\UPDATE_BADGE_ORDER_DOWN_ORDER::QI(array($type,$ref_id,$new_order));
+                \SQL\UPDATE_BADGE_ORDER_DOWN_ID::QI(array($badge));
+                break;
+            case 'down':
+                $new_order = $data['order'] +1;
+                \SQL\UPDATE_BADGE_ORDER_UP_ORDER::QI(array($type,$ref_id,$new_order));
+                \SQL\UPDATE_BADGE_ORDER_UP_ID::QI(array($badge));    
+                break;
+            default:
+                throw new \SYSTEM\LOG\ERROR('Operration not supported');
+        }
+        return \SYSTEM\LOG\JsonResult::ok();
+    }
+    public static function sai_mod__SAI_saimod_project_action_badge_delete($data){
+        foreach($data as $id){
+            \SQL\DELETE_BADGE::QI(array($id));
+        }
+        return \JsonResult::ok();
     }
 
     private static function badge_color_options($selected = null){

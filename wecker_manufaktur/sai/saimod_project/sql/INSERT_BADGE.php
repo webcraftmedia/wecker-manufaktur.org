@@ -14,7 +14,7 @@ namespace SQL;
 /**
  * QQ to get System Api Tree by group
  */
-class DELETE_BADGE extends \SYSTEM\DB\QP {
+class INSERT_BADGE extends \SYSTEM\DB\QP {
     /**
      * Get Classname of the QQ
      * 
@@ -28,6 +28,9 @@ class DELETE_BADGE extends \SYSTEM\DB\QP {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'DELETE FROM `badges` WHERE `id` = ?;';
+        'INSERT INTO `badges`'.
+        ' (`type`, `ref_id`, `badge`, `color`, `order`, `visible`)'.
+        ' VALUES ( ?, ?, ? ,?, (IFNULL((SELECT MAX(`order`)+1 FROM `badges` as `b` WHERE `type` = ? AND `ref_id` = ?),1)), ?);';
+
     }    
 }

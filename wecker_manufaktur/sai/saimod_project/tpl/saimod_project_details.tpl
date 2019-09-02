@@ -34,6 +34,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <th colspan="2">
+                        <button class="btn btn-sm btn-default btn-project-back" ><i class="fa fa-angle-left"></i>&nbsp;Back</button>
+                        <button id="btn-project-update" class="btn btn-sm btn-success pull-right" project="${id}"><i class="fa fa-edit"></i>&nbsp;Update</button>
+                    </th>
+                </tr>
+                <tr>
                     <th colspan="2"></th>
                 </tr>
                 <tr>
@@ -66,13 +72,13 @@
                                     </td>
                                     <td></td>
                                     <td>
-                                        <select class="focus-visibility form-control" project="${id}">
+                                        <select id="input-focus-visibility" class="form-control">
                                             <option value="0" >Invisible</option>
                                             <option value="1" selected>Visible</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <button type="button" id="btn-project-focus-new" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button>
+                                        <button type="button" id="btn-project-focus-new" class="btn btn-sm btn-success pull-right" project="${id}"><i class="fa fa-plus"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -109,22 +115,25 @@
                                     </td>
                                     <td></td>
                                     <td>
-                                        <select class="type-visibility form-control" project="${id}">
+                                        <select id="input-type-visibility" class="form-control">
                                             <option value="0" >Invisible</option>
                                             <option value="1" selected>Visible</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <button type="button" id="btn-project-type-new" class="btn btn-sm btn-success pull-right"><i class="fa fa-plus"></i></button>
+                                        <button type="button" id="btn-project-type-new" class="btn btn-sm btn-success pull-right" project="${id}"><i class="fa fa-plus"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </th>
                 </tr>
+                <tr>
+                    <th colspan="2">
+                        <button class="btn btn-sm btn-default btn-project-back" ><i class="fa fa-angle-left"></i>&nbsp;Back</button>
+                    </th>
+                </tr>
             </tbody>
         </table>
-        <button id="btn-project-back" class="btn btn-sm btn-default" style="margin: 12px;"><i class="fa fa-angle-left"></i>&nbsp;Back</button>
-        <button id="btn-project-update" class="btn btn-sm btn-success pull-right" style="margin: 12px;"><i class="fa fa-edit"></i>&nbsp;Update</button>
     </div>
 </div>
