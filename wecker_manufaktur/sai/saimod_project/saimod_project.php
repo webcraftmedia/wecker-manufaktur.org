@@ -35,7 +35,7 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
 
-            $vars['data'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_projects_tr.tpl'))->SERVERPATH(),$row);
+            $vars['data'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_tr.tpl'))->SERVERPATH(),$row);
             $count_filtered++;
         }
         // Pagintation
@@ -123,7 +123,7 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
 
         // Focus
         $vars['focus'] = '';
-        $focus = \SQL\SELECT_BADGES_PROJECT::QQ(array(self::BADGE_TYPE_PROJECT_FOCUS,$project));
+        $focus = \SQL\SELECT_BADGES::QQ(array(self::BADGE_TYPE_PROJECT_FOCUS,$project));
         while($row = $focus->next()){
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
@@ -135,7 +135,7 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
 
         // Type
         $vars['type'] = '';
-        $type = \SQL\SELECT_BADGES_PROJECT::QQ(array(self::BADGE_TYPE_PROJECT_TYPE,$project));
+        $type = \SQL\SELECT_BADGES::QQ(array(self::BADGE_TYPE_PROJECT_TYPE,$project));
         while($row = $type->next()){
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';

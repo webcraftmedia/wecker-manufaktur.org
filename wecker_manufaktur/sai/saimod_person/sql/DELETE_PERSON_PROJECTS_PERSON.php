@@ -14,7 +14,7 @@ namespace SQL;
 /**
  * QQ to get System Api Tree by group
  */
-class SELECT_PERSONS extends \SYSTEM\DB\QQ {
+class DELETE_PERSON_PROJECTS_PERSON extends \SYSTEM\DB\QP {
     /**
      * Get Classname of the QQ
      * 
@@ -28,6 +28,6 @@ class SELECT_PERSONS extends \SYSTEM\DB\QQ {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'SELECT * FROM `persons` WHERE `visible` = 1 ORDER BY `order`';
+        'DELETE FROM `person_projects` WHERE `person` = ?;';
     }    
 }

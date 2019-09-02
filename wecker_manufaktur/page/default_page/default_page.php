@@ -24,7 +24,7 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         $_content_imgs      = '';
         $_content_details   = '';
 
-        $persons        = \SQL\SELECT_PERSONS::QQ();
+        $persons        = \SQL\SELECT_PERSONS_VISIBLE::QQ();
         $person_badges  = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PERSON_ABILITIES));   // This part we filter phpside due to performance.
         $person_projects= \SQL\SELECT_PERSON_PROJECTS::QA();                                  // This part we filter phpside due to performance.
         while($row = $persons->next()){

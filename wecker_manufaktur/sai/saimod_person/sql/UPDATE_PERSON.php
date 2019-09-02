@@ -14,7 +14,7 @@ namespace SQL;
 /**
  * QQ to get System Api Tree by group
  */
-class SELECT_BADGES_PROJECT extends \SYSTEM\DB\QP {
+class UPDATE_PERSON extends \SYSTEM\DB\QP {
     /**
      * Get Classname of the QQ
      * 
@@ -28,9 +28,9 @@ class SELECT_BADGES_PROJECT extends \SYSTEM\DB\QP {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'SELECT *'.
-        ' FROM `badges`'.
-        ' WHERE `type` = ? AND `ref_id` = ? '.
-        ' ORDER BY `order`;';
+        'UPDATE `persons`'.
+        ' SET `img` = ?, `name` = ?, `info` = ?, visible = ?'.
+        ' WHERE `id` = ?;';
+
     }    
 }
