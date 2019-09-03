@@ -53,6 +53,7 @@
                                     <th>Preview</th>
                                     <th>Badge</th>
                                     <th>Color</th>
+                                    <th>Text Color</th>
                                     <th>Order</th>
                                     <th>Visible</th>
                                     <th>
@@ -63,13 +64,10 @@
                             <tbody>
                                 ${focus}
                                  <tr>
-                                    <td><span class="badge badge-primary"></span></td>
+                                    <td><span class="badge" style=""></span></td>
                                     <td><input id="input-focus-badge" class="form-control" type="text" style="width: 100%"/></td>
-                                    <td>
-                                        <select id="input-focus-color" class="form-control">
-                                            ${badge_colors}
-                                        </select>
-                                    </td>
+                                    <td><input id="input-focus-color" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
+                                    <td><input id="input-focus-color-text" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
                                     <td></td>
                                     <td>
                                         <select id="input-focus-visibility" class="form-control">
@@ -106,13 +104,10 @@
                             <tbody>
                                 ${type}
                                  <tr>
-                                    <td><span class="badge badge-primary"></span></td>
+                                    <td><span class="badge"></span></td>
                                     <td><input id="input-type-badge" class="form-control" type="text" style="width: 100%"/></td>
-                                    <td>
-                                        <select id="input-type-color" class="form-control">
-                                            ${badge_colors}
-                                        </select>
-                                    </td>
+                                    <td><input id="input-type-color" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
+                                    <td><input id="input-type-color-text" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
                                     <td></td>
                                     <td>
                                         <select id="input-type-visibility" class="form-control">

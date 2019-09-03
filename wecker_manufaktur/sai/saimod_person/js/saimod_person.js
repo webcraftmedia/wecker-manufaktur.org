@@ -182,10 +182,11 @@ function init_saimod_person_details(){
     });
     // Badge Preview Color
     $('.input-badge-color, #input-ability-color').change(function(){
-        $(this).parent().parent().find('.badge').removeClass(function (index, className) {
-            return (className.match (/(^|\s)badge-\S+/g) || []).join(' ');
-        });
-        $(this).parent().parent().find('.badge').addClass($(this).val());
+        $(this).parent().parent().find('.badge').css('background-color','#'+$(this).val());
+    });
+    // Badge Preview Color text
+    $('.input-badge-color-text, #input-ability-color-text').change(function(){
+        $(this).parent().parent().find('.badge').css('color','#'+$(this).val());
     });
 
     // Ability New Button
@@ -193,6 +194,7 @@ function init_saimod_person_details(){
         person = $(this).attr('person');
         badge = $('#input-ability-badge').val();
         color = $('#input-ability-color').val();
+        color_text = $('#input-ability-color-text').val();
         visibility = $('#input-ability-visibility').val();
         $.ajax({
             async: true,
@@ -206,6 +208,7 @@ function init_saimod_person_details(){
                     person: person,
                     badge: badge,
                     color: color,
+                    color_text: color_text,
                     visibility: visibility
                 }
             },

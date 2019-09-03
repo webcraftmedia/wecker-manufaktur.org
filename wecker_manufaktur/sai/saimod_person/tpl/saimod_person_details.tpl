@@ -49,6 +49,7 @@
                                     <th>Preview</th>
                                     <th>Badge</th>
                                     <th>Color</th>
+                                    <th>Text Color</th>
                                     <th>Order</th>
                                     <th>Visible</th>
                                     <th>
@@ -59,13 +60,10 @@
                             <tbody>
                                 ${abilities}
                                  <tr>
-                                    <td><span class="badge badge-primary"></span></td>
+                                    <td><span class="badge"></span></td>
                                     <td><input id="input-ability-badge" class="form-control" type="text" style="width: 100%"/></td>
-                                    <td>
-                                        <select id="input-ability-color" class="form-control">
-                                            ${badge_colors}
-                                        </select>
-                                    </td>
+                                    <td><input id="input-ability-color" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
+                                    <td><input id="input-ability-color-text" class="form-control" type="text" minlength="6" maxlength="6" style="width: 100%"/></td>
                                     <td></td>
                                     <td>
                                         <select id="input-ability-visibility" class="form-control">

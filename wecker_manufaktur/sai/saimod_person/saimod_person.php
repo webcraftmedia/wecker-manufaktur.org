@@ -115,12 +115,8 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
             
-            $row['badge_colors'] = self::badge_color_options($row['color']);
-            
             $vars['abilities'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/saimod_person_badge_tr.tpl'))->SERVERPATH(),$row);
         }
-
-        $vars['badge_colors'] = self::badge_color_options();
 
         return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/saimod_person_details.tpl'))->SERVERPATH(),$vars);
     }
@@ -141,6 +137,7 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
                                                 $data['person'],
                                                 $data['badge'],
                                                 $data['color'],
+                                                $data['color_text'],
                                                 \SAI\saimod_project::BADGE_TYPE_PERSON_ABILITIES,
                                                 $data['person'],
                                                 $data['visibility']))
@@ -177,25 +174,6 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
             \SQL\DELETE_BADGE::QI(array($id));
         }
         return \JsonResult::ok();
-    }
-
-    private static function badge_color_options($selected = null){
-        $colors = array(
-            'badge-primary',
-            'badge-secondary',
-            'badge-success',
-            'badge-danger',
-            'badge-warning',
-            'badge-info',
-            'badge-light',
-            'badge-dark'
-        );
-        $result = '';
-        foreach($colors as $color){
-            $vars = array('value' => $color, 'selected' => $color == $selected ? 'selected' : '');
-            $result .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/badge_color_option.tpl'))->SERVERPATH(),$vars);
-        }
-        return $result;
     }
 
     public static function menu(){

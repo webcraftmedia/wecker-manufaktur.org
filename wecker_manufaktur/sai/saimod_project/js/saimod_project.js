@@ -184,10 +184,11 @@ function init_saimod_project_details(){
     });
     // Badge Preview Color
     $('.input-badge-color, #input-focus-color, #input-type-color').change(function(){
-        $(this).parent().parent().find('.badge').removeClass(function (index, className) {
-            return (className.match (/(^|\s)badge-\S+/g) || []).join(' ');
-        });
-        $(this).parent().parent().find('.badge').addClass($(this).val());
+        $(this).parent().parent().find('.badge').css('background-color','#'+$(this).val());
+    });
+    // Badge Preview Color text
+    $('.input-badge-color-text, #input-focus-color-text, #input-type-color-text').change(function(){
+        $(this).parent().parent().find('.badge').css('color','#'+$(this).val());
     });
 
     // Focus New Button
@@ -195,6 +196,7 @@ function init_saimod_project_details(){
         project = $(this).attr('project');
         badge = $('#input-focus-badge').val();
         color = $('#input-focus-color').val();
+        color_text = $('#input-focus-color-text').val();
         visibility = $('#input-focus-visibility').val();
         $.ajax({
             async: true,
@@ -208,6 +210,7 @@ function init_saimod_project_details(){
                     project: project,
                     badge: badge,
                     color: color,
+                    color_text: color_text,
                     visibility: visibility
                 }
             },
@@ -229,6 +232,7 @@ function init_saimod_project_details(){
         project = $(this).attr('project');
         badge = $('#input-type-badge').val();
         color = $('#input-type-color').val();
+        color_text = $('#input-type-color-text').val();
         visibility = $('#input-type-visibility').val();
         $.ajax({
             async: true,
@@ -242,6 +246,7 @@ function init_saimod_project_details(){
                     project: project,
                     badge: badge,
                     color: color,
+                    color_text: color_text,
                     visibility: visibility
                 }
             },

@@ -29,8 +29,8 @@ class INSERT_BADGE extends \SYSTEM\DB\QP {
      */
     public static function mysql(){return
         'INSERT INTO `badges`'.
-        ' (`type`, `ref_id`, `badge`, `color`, `order`, `visible`)'.
-        ' VALUES ( ?, ?, ? ,?, (IFNULL((SELECT MAX(`order`)+1 FROM `badges` as `b` WHERE `type` = ? AND `ref_id` = ?),1)), ?);';
+        ' (`type`, `ref_id`, `badge`, `color`, `color_text`, `order`, `visible`)'.
+        ' VALUES ( ?, ?, ? ,?, ?, (IFNULL((SELECT MAX(`order`)+1 FROM `badges` as `b` WHERE `type` = ? AND `ref_id` = ?),1)), ?);';
 
     }    
 }

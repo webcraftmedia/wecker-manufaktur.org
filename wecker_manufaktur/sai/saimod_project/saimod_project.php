@@ -128,8 +128,6 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
             
-            $row['badge_colors'] = self::badge_color_options($row['color']);
-            
             $vars['focus'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_badge_tr.tpl'))->SERVERPATH(),$row);
         }
 
@@ -139,13 +137,9 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
         while($row = $type->next()){
             $row['selected_invisible'] = $row['visible'] !== 1 ? 'selected' : '';
             $row['selected_visible'] = $row['visible'] == 1 ? 'selected' : '';
-            
-            $row['badge_colors'] = self::badge_color_options($row['color']);
 
             $vars['type'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_badge_tr.tpl'))->SERVERPATH(),$row);
         }
-
-        $vars['badge_colors'] = self::badge_color_options();
 
         return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/saimod_project_details.tpl'))->SERVERPATH(),$vars);
     }
@@ -167,6 +161,7 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
                                                 $data['project'],
                                                 $data['badge'],
                                                 $data['color'],
+                                                $data['color_text'],
                                                 self::BADGE_TYPE_PROJECT_FOCUS,
                                                 $data['project'],
                                                 $data['visibility']))
@@ -178,6 +173,7 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
                                                 $data['project'],
                                                 $data['badge'],
                                                 $data['color'],
+                                                $data['color_text'],
                                                 self::BADGE_TYPE_PROJECT_TYPE,
                                                 $data['project'],
                                                 $data['visibility']))
@@ -214,25 +210,6 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
             \SQL\DELETE_BADGE::QI(array($id));
         }
         return \JsonResult::ok();
-    }
-
-    private static function badge_color_options($selected = null){
-        $colors = array(
-            'badge-primary',
-            'badge-secondary',
-            'badge-success',
-            'badge-danger',
-            'badge-warning',
-            'badge-info',
-            'badge-light',
-            'badge-dark'
-        );
-        $result = '';
-        foreach($colors as $color){
-            $vars = array('value' => $color, 'selected' => $color == $selected ? 'selected' : '');
-            $result .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/badge_color_option.tpl'))->SERVERPATH(),$vars);
-        }
-        return $result;
     }
 
     public static function menu(){

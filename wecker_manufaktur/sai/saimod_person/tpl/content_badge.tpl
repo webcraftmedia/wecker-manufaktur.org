@@ -1,1 +1,1 @@
-<span class="badge ${color}">${badge}</span>
+<span class="badge" style="background-color: #${color}; color: #${color_text};">${badge}</span>
