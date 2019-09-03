@@ -15,3 +15,5 @@ REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `na
 REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (10045, 42, 2, 10000, 'badge_delete', 'data', 'JSON');
 
 REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (10050, 42, 2, 10000, 'person_save', 'data', 'JSON');
+REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (10051, 42, 2, 10000, 'person_project_new', 'data', 'JSON');
+REPLACE INTO `system_api` (`ID`, `group`, `type`, `parentID`, `parentValue`, `name`, `verify`) VALUES (10052, 42, 2, 10000, 'person_project_delete', 'data', 'JSON');

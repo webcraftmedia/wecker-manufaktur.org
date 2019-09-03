@@ -80,6 +80,40 @@
                     </th>
                 </tr>
                 <tr>
+                    <th colspan="2">Projects</th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <table class="table table-striped table-condensed tablesorter sai_margin_off" id="table-person-projects">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Website</th>
+                                    <th>Order</th>
+                                    <th>Visible</th>
+                                    <th>
+                                        <button type="button" id="btn-projects-del" class="btn btn-sm btn-danger pull-right" person="${id}"><i class="fa fa-trash"></i></button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${projects}
+                                 <tr>
+                                    <td colspan="5">
+                                        <select id="input-project" class="form-control">
+                                            ${select_projects}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" id="btn-person-project-new" class="btn btn-sm btn-success pull-right" person="${id}"><i class="fa fa-plus"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                </tr>
+                <tr>
                     <th colspan="2">
                         <button class="btn btn-sm btn-default btn-person-back" ><i class="fa fa-angle-left"></i>&nbsp;Back</button>
                     </th>

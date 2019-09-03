@@ -118,7 +118,37 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
             $vars['abilities'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/saimod_person_badge_tr.tpl'))->SERVERPATH(),$row);
         }
 
+        // Projects
+        $vars['projects'] = '';
+        $projects = \SQL\SELECT_PERSON_PROJECTS_PERSON::QQ(array($person));
+        while($row = $projects->next()){
+            $row['visible'] = $row['visible'] == 1 ? 'visible' : 'invisible';
+            $vars['projects'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/saimod_person_project_tr.tpl'))->SERVERPATH(),$row);
+        }
+        $vars['select_projects'] = '';
+        $select_projects = \SQL\SELECT_PERSON_PROJECTS_MISSING::QQ(array($person));
+        while($row = $select_projects->next()){
+            $row['selected'] = '';
+            $row['value'] = $row['id'];
+            $row['text'] = $row['name'].' - '.$row['website'];
+            $vars['select_projects'] .= \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/select_option.tpl'))->SERVERPATH(),$row);
+        }
+
         return \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/saimod_person_details.tpl'))->SERVERPATH(),$vars);
+    }
+
+    public static function sai_mod__SAI_saimod_person_action_person_project_new($data){
+        return  \SYSTEM\LOG\JsonResult::status(
+            \SQL\INSERT_PERSON_PROJECT::QI(array(   $data['person'],
+                                                    $data['project']))
+        );
+    }
+
+    public static function sai_mod__SAI_saimod_person_action_person_project_delete($data){
+        foreach($data['projects'] as $id){
+            \SQL\DELETE_PERSON_PROJECT::QI(array($data['person'],$id));
+        }
+        return \JsonResult::ok();
     }
 
     public static function sai_mod__SAI_saimod_person_action_person_update($data){

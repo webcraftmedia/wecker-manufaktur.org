@@ -357,6 +357,71 @@ function init_saimod_person_details(){
         }
     });
 
+    // Project New Button
+    $('#btn-person-project-new').click(function(){
+        person = $(this).attr('person');
+        project = $('#input-project').val();
+        $.ajax({
+            async: true,
+            url: this.endpoint,
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                sai_mod: '.SAI.saimod_person',
+                action: 'person_project_new',
+                data: {
+                    person: person,
+                    project: project
+                }
+            },
+            success: function(data){
+                if(data.status){
+                    system.reload();
+                } else {
+                    alert('Something happend - try again!');
+                }
+            },
+            error: function(){
+                alert('Something happend - try again!');
+            }
+        });
+    });
+
+    // Projects Delete
+    $('#btn-projects-del').click(function(){
+        person = $(this).attr('person');
+        var projects = [];
+        $(this).parent().parent().parent().parent().find('.project-check:checked').each(function() {
+            projects.push($(this).attr('project'));
+        });
+        if (confirm('Are you sure you want to delete '+projects.length+' Projects PERMANENTLY?')) {
+            $.ajax({
+                async: true,
+                url: this.endpoint,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    sai_mod: '.SAI.saimod_person',
+                    action: 'person_project_delete',
+                    data: {
+                        person: person,
+                        projects: projects
+                    }
+                },
+                success: function(data){
+                    if(data.status){
+                        system.reload();
+                    } else {
+                        alert('Something happend - try again!');
+                    }
+                },
+                error: function(){
+                    alert('Something happend - try again!');
+                }
+            });
+        }
+    });
+
     // Back Button
     $('.btn-person-back').click(function(){
         system.back();
