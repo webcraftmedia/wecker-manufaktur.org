@@ -8,6 +8,74 @@ $(document).ready(function() {
       $('.project-link').click(function(e){showProject(e,$(this).attr('project'),false,true)})
 
       $('.project-person-link').click(function(e){showPerson(e,$(this).attr('person'),true,false)})
+
+      $("#apply-send").click(function(e){
+        e.preventDefault();
+        var data =  {   name: $('#apply-name').val(),
+                        email: $('#apply-email').val(),
+                        message: $('#apply-message').val()};
+
+        if (data.name.length < 3 ){
+            alert( "Bitte einen Namen eingeben");
+            $("#apply-name").focus();
+            return null;
+        }
+        if (!validateEmail(data.email)){
+            alert( "Bitte einen gültige E-Mail eingeben");
+            $("#apply-email").focus();
+            return null;
+        }   
+        if (data.message.length > 500 ){
+            alert( "Bitte einen kürzeren Text eingeben");    
+            $("#apply-message").focus();
+            return null;
+        }
+
+        sendMail(data,function(data){
+            if(data && data.status){
+                $("#apply-message").val('')
+                alert("Danke! Deine Nachricht wurde versendet.");
+            } else {
+                alert("Deine Nachricht konnte nicht versendet weden. Bitte versuche es später noch einmal. Danke.");
+            }
+        });
+    });
+
+    $('#apply-message').on('keyup',function(){
+        $('#apply-count').html($(this).val().length+'/500');
+    });
+
+    $('#footer-nl-subscribe').click(function(e){
+        e.preventDefault();
+        var email   = $('#footer-nl-email').val();
+        
+        if(!validateEmail(email)){
+            alert( "Bitte einen gültige E-Mail eingeben");
+            $('#footer-nl-email').focus()
+        } else {
+            $.ajax({
+                async: true,
+                url: './api.php',
+                type: 'GET',
+                dataType: 'JSON',
+                data: {
+                    call: 'send_subscribe',
+                    data: { email:  email}
+                },
+                success: function(data){
+                    if(!data.status){
+                        alert("Das Eintragen in den Newsletter hat leider nicht funktioniert. Bitte versuche es später noch einmal. Danke.");
+                    } else {
+                        $('#confirm').show();
+                        $('#formular').hide();
+                    }
+                },
+                error: function(){
+                    alert("Das Eintragen in den Newsletter hat leider nicht funktioniert. Bitte versuche es später noch einmal. Danke.");
+                }
+            });
+        }
+    });
 });
 
 function showPerson(event,subject_id,jump,toggle){
@@ -62,3 +130,27 @@ function showProject(event,subject_id,jump,toggle){
             $('#project-details-'+subject_id).removeClass('d-none');
       }
 }
+
+function sendMail(data,callback){
+      $.ajax({
+          async: true,
+          url: './api.php',
+          type: 'GET',
+          dataType: 'JSON',
+          data: {
+              call: 'send_mail',
+              data: data
+          },
+          success: function(data){
+              callback(data);
+          },
+          error: function(){
+              callback(false);
+          }
+      });
+  }
+  
+  function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+  }

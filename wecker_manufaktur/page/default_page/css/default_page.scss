@@ -6,12 +6,12 @@ $color_green_1: rgb(12,22,11);
 $color_green_2: rgb(21,26,16);
 $color_green_3: rgb(29,48,25);
 
-// Paddings & Margins
-$padding_page: 100px;
-$padding_heading_top:    100px;
-$padding_heading_bottom: 50px;
-$padding_footer: 25px;
-$padding_footer_bottomline: 10px;
+// Distances
+$distance_huge: 250px;
+$distance_big: 100px;
+$distance_large: 50px;
+$distance_medium: 25px;
+$distance_small: 10px;
 
 // Images
 $home_img: url(./files/img/wecker_manufaktur.jpg);
@@ -35,8 +35,8 @@ body {
 }
 
 #menu {
-    padding-left: $padding_page;
-    padding-right: $padding_page;
+    padding-left: $distance_big;
+    padding-right: $distance_big;
 }
 
 #home {
@@ -45,8 +45,8 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    padding-left: $padding_page;
-    padding-right: $padding_page;
+    padding-left: $distance_big;
+    padding-right: $distance_big;
 
     h1{
         display: flex;
@@ -71,19 +71,19 @@ body {
 #content {
     background-image: linear-gradient($color_green_1,$color_green_3);
     text-align: center;
-    padding-left: $padding_page;
-    padding-right: $padding_page;
+    padding-left: $distance_big;
+    padding-right: $distance_big;
 
     #philosophy{
         h2{
-            padding-top: $padding_heading_top;
-            padding-bottom: $padding_heading_bottom;
+            padding-top: $distance_large;
+            padding-bottom: $distance_medium;
         }
     }
 
     #persons{
-        padding-top: $padding_heading_top;
-        padding-bottom: $padding_heading_bottom;
+        padding-top: $distance_large;
+        padding-bottom: $distance_medium;
 
         .person {
             img {
@@ -103,8 +103,8 @@ body {
 
     #projects{
         h2{
-            padding-top: $padding_heading_top;
-            padding-bottom: $padding_heading_bottom;
+            padding-top: $distance_large;
+            padding-bottom: $distance_medium;
         }
 
         .project{
@@ -130,11 +130,42 @@ body {
     }
 
     #apply{
+        padding-bottom: $distance_medium;
+
         h2 {
-            padding-top: $padding_heading_top;
-            padding-bottom: $padding_heading_bottom;
+            padding-top: $distance_large;
+            padding-bottom: $distance_medium;
         }
-        padding-bottom: $padding_heading_bottom;
+
+        input, textarea {
+            background-image: linear-gradient(to right, $color_green_1,$color_green_3);
+            width: 100%;
+            color: $color_white;
+            border: 0;
+            padding: $distance_small;
+            border-radius: $distance_small;
+        }
+
+        input::placeholder, textarea::placeholder{
+            color: $color_white;
+        }
+
+        input {
+            height: $distance_large;
+            margin-bottom: $distance_medium;
+        }
+
+        textarea {
+            height: $distance_huge;
+        }
+
+        #apply-send-box {
+            text-align: left;
+        }
+
+        #apply-count-box {
+            text-align: right;
+        }
     }
 
     .table-condensed {
@@ -149,16 +180,16 @@ body {
 
 #footer-links {
     background-color: $color_green_2;
-    padding-left: $padding_page;
-    padding-right: $padding_page;
-    padding-top: $padding_footer;
-    padding-bottom: $padding_footer;
+    padding-left: $distance_big;
+    padding-right: $distance_big;
+    padding-top: $distance_small;
+    padding-bottom: $distance_small;
 }
 
 #footer-bottomline {
     background-color: $color_black;
-    padding: $padding_footer_bottomline;
-    padding-left: $padding_page;
-    padding-right: $padding_page;
+    padding: $distance_small;
+    padding-left: $distance_big;
+    padding-right: $distance_big;
     text-align: center;
 }

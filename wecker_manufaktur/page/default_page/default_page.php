@@ -130,6 +130,7 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         $vars['css'] = self::css();
         $vars['_content_persons']   = self::getPersons();
         $vars['_content_projects']  = self::getProjects();
+        $vars['_content_apply'] = \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_apply.tpl'))->SERVERPATH());
         $vars = array_merge($vars,  \SYSTEM\PAGE\text::tag('wecker_manufaktur'));
         return \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/default_page.tpl'))->SERVERPATH(), $vars);
     }
