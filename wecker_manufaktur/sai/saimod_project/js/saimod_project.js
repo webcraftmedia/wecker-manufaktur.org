@@ -183,11 +183,11 @@ function init_saimod_project_details(){
         $(this).parent().parent().find('.badge').html($(this).val());
     });
     // Badge Preview Color
-    $('.input-badge-color, #input-focus-color, #input-type-color').change(function(){
+    $('.input-badge-color, #input-focus-color, #input-type-color').keyup(function(){
         $(this).parent().parent().find('.badge').css('background-color','#'+$(this).val());
     });
     // Badge Preview Color text
-    $('.input-badge-color-text, #input-focus-color-text, #input-type-color-text').change(function(){
+    $('.input-badge-color-text, #input-focus-color-text, #input-type-color-text').keyup(function(){
         $(this).parent().parent().find('.badge').css('color','#'+$(this).val());
     });
 

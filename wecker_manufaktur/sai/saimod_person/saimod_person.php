@@ -207,9 +207,9 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
     }
 
     public static function menu(){
-        return new \SYSTEM\SAI\sai_module_menu( 102,
+        return new \SYSTEM\SAI\sai_module_menu( 50,
                                     \SYSTEM\SAI\sai_module_menu::POISITION_LEFT,
-                                    \SYSTEM\SAI\sai_module_menu::DIVIDER_NONE,
+                                    \SYSTEM\SAI\sai_module_menu::DIVIDER_LEFT,
                                     \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPERSON('tpl/menu.tpl'))->SERVERPATH()));}
     public static function right_public(){return false;}
     public static function right_right(){return \SYSTEM\SECURITY\security::check(\SYSTEM\SECURITY\RIGHTS::SYS_SAI);}

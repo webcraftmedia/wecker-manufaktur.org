@@ -213,9 +213,9 @@ class saimod_project extends \SYSTEM\SAI\sai_module{
     }
 
     public static function menu(){
-        return new \SYSTEM\SAI\sai_module_menu( 101,
+        return new \SYSTEM\SAI\sai_module_menu( 51,
                                     \SYSTEM\SAI\sai_module_menu::POISITION_LEFT,
-                                    \SYSTEM\SAI\sai_module_menu::DIVIDER_LEFT,
+                                    \SYSTEM\SAI\sai_module_menu::DIVIDER_RIGHT,
                                     \SYSTEM\PAGE\replace::replaceFile((new \SAI\PPROJECT('tpl/menu.tpl'))->SERVERPATH()));}
     public static function right_public(){return false;}
     public static function right_right(){return \SYSTEM\SECURITY\security::check(\SYSTEM\SECURITY\RIGHTS::SYS_SAI);}
