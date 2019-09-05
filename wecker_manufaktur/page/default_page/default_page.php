@@ -131,6 +131,8 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         $vars['_content_persons']   = self::getPersons();
         $vars['_content_projects']  = self::getProjects();
         $vars['_content_apply'] = \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_apply.tpl'))->SERVERPATH());
+        $vars['_modal_imprint'] = \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/modal_imprint.tpl'))->SERVERPATH());
+        $vars['_modal_dataprotection'] = \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/modal_dataprotection.tpl'))->SERVERPATH());
         $vars = array_merge($vars,  \SYSTEM\PAGE\text::tag('wecker_manufaktur'));
         return \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/default_page.tpl'))->SERVERPATH(), $vars);
     }

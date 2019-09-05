@@ -47,7 +47,7 @@
         </nav>
         <!-- HOME -->
         <section id="home" class="fullpage">
-            <h1>${page_title}</h1>
+            <h1><img src="./files/img/WECKER_Logo.png" alt="${page_title}" style="width: 50%; margin-left: auto; margin-right: auto;"/></h1>
             <h4>${page_statement}</h4>
             <a href="#philosophy"><i class="fa fa-angle-down"></i></a>            
         </section>
@@ -76,7 +76,9 @@
             <div class="container-fluid">
                 <div class="row" id="footer-links">
                     <div class="col-lg-3">
-                        <div id="footer-logo">${footer_logo}</div>
+                        <div id="footer-logo">
+                            <img src="./files/img/WECKER_Logo.png" alt="${footer_logo}" style="width: 100%;"/>
+                        </div>
                         <div id="footer-nl">
                             <input id="footer-nl-email"     name="email"  type="text"   placeholder="${footer_newsletter_email_placeholder}"/>
                             <input id="footer-nl-subscribe" name="submit" type="submit" value="${footer_newsletter_email_value}"/>
@@ -85,8 +87,8 @@
                     <div class="col-lg-3">
                         <h3>${footer_legal_heading}</h3>
                         <div id="footer-legal">
-                            <a href="#!dataprotection"> ${footer_legal_dataprotection}</a>
-                            <a href="#!imprint">        ${footer_legal_imprint}</a>
+                            <a href="#modal-dataprotection" data-toggle="modal" data-target="#modal-dataprotection"> ${footer_legal_dataprotection}</a>
+                            <a href="#modal-imprint" data-toggle="modal" data-target="#modal-imprint">${footer_legal_imprint}</a>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -112,5 +114,7 @@
                 </div>
             </div>
         </section>
+        ${_modal_imprint}
+        ${_modal_dataprotection}
     </body>
 </html>
