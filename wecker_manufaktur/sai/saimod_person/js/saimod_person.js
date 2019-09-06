@@ -138,6 +138,7 @@ function init_saimod_person_new(){
         img = $('#input-person-image').val();
         name = $('#input-person-name').val();
         info = $('#input-person-info').val();
+        contact = $('#input-person-contact').val();
         visibility = $('#input-person-visibility').val();
         $.ajax({
             async: true,
@@ -151,6 +152,7 @@ function init_saimod_person_new(){
                     img: img,
                     name: name,
                     info: info,
+                    contact: contact,
                     visibility: visibility,
                 }
             },
@@ -434,6 +436,7 @@ function init_saimod_person_details(){
         img = $('#input-person-image').val();
         name = $('#input-person-name').val();
         info = $('#input-person-info').val();
+        contact = $('#input-person-contact').val();
         visibility = $('#input-person-visibility').val();
         $.ajax({
             async: true,
@@ -448,6 +451,7 @@ function init_saimod_person_details(){
                     img: img,
                     name: name,
                     info: info,
+                    contact: contact,
                     visibility: visibility,
                 }
             },

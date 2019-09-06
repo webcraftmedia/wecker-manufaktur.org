@@ -28,8 +28,8 @@ class INSERT_PERSON extends \SYSTEM\DB\QP {
      * @return string Returns MYSQL Query String
      */
     public static function mysql(){return
-        'INSERT INTO `persons` (`img`, `name`, `info`, `order`, `visible`)'.
-        ' VALUES(?, ?, ?, (IFNULL((SELECT MAX(`order`)+1 FROM `persons` as `p`),1)), ?);';
+        'INSERT INTO `persons` (`img`, `name`, `info`, `contact`, `order`, `visible`)'.
+        ' VALUES(?, ?, ?, ?, (IFNULL((SELECT MAX(`order`)+1 FROM `persons` as `p`),1)), ?);';
 
     }    
 }

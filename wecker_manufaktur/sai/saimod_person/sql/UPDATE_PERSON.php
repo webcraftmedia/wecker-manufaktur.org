@@ -29,7 +29,7 @@ class UPDATE_PERSON extends \SYSTEM\DB\QP {
      */
     public static function mysql(){return
         'UPDATE `persons`'.
-        ' SET `img` = ?, `name` = ?, `info` = ?, visible = ?'.
+        ' SET `img` = ?, `name` = ?, `info` = ?, `contact` = ?, visible = ?'.
         ' WHERE `id` = ?;';
 
     }    

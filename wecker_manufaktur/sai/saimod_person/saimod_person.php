@@ -89,6 +89,7 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
             \SQL\INSERT_PERSON::QI(array(   $data['img'],
                                             $data['name'],
                                             $data['info'],
+                                            $data['contact'],
                                             $data['visibility']))
         );
     }
@@ -153,9 +154,10 @@ class saimod_person extends \SYSTEM\SAI\sai_module{
 
     public static function sai_mod__SAI_saimod_person_action_person_update($data){
         return  \SYSTEM\LOG\JsonResult::status(
-            \SQL\UPDATE_PERSON::QI(array(  $data['img'],
+            \SQL\UPDATE_PERSON::QI(array(   $data['img'],
                                             $data['name'],
                                             $data['info'],
+                                            $data['contact'],
                                             $data['visibility'],
                                             $data['person']))
         );

@@ -21,6 +21,10 @@
                     <td><textarea id="input-person-info" class="form-control" style="width: 100%; min-height: 100px;">${info}</textarea></td>
                 </tr>
                 <tr>
+                    <th>Info</th>
+                    <td><textarea id="input-person-contact" class="form-control" style="width: 100%; min-height: 100px;">${contact}</textarea></td>
+                </tr>
+                <tr>
                     <th>Visibility</th>
                     <td>
                         <select id="input-person-visibility" class="form-control" person="${id}">

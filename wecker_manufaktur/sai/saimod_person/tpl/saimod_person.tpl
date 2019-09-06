@@ -3,12 +3,12 @@
         <table class="table table-striped table-condensed tablesorter sai_margin_off" id="table_persons">
             <thead>
                 <tr>
-                    <th colspan="7">
+                    <th colspan="8">
                         Rows: ${count} Page: ${page}
                     </th>
                 </tr>
                 <tr>
-                    <th colspan="6">
+                    <th colspan="7">
                         <input class="input-medium search-query action-control" id="input_search" type="text" placeholder="Search" size="40" style="width: 100%;" value="${search}"/>
                     </th>
                     <th>
@@ -19,6 +19,7 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Info</th>
+                    <th>Contact</th>
                     <th>Abilities</th>
                     <th>Order</th>
                     <th>Visible</th>

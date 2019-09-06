@@ -13,6 +13,10 @@
                 <th scope="row">${table_projects}</th>
                 <td>${projects}</td>
             </tr>
+            <tr>
+                <th scope="row">${table_contact}</th>
+                <td>${contact}</td>
+            </tr>
         </table>
     </div>
 </div>
