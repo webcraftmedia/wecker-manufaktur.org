@@ -3,7 +3,7 @@
         <div>
             <img src="./files/persons/${img}" class="rounded-circle" alt="${name}">
         </div>
-        <div>
+        <div class="person-img-name">
             ${name} <i class="fa fa-angle-down"></i>
         </div>
     </a>

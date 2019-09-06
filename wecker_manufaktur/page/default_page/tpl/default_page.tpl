@@ -33,7 +33,7 @@
     </head>
     <body>
         <!-- MENU -->
-        <nav id="menu" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav id="menu" class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,41 +47,45 @@
         </nav>
         <!-- HOME -->
         <section id="home" class="fullpage">
-            <h1><img src="./files/img/WECKER_Logo.png" alt="${page_title}" style="width: 50%; margin-left: auto; margin-right: auto;"/></h1>
-            <h4>${page_statement}</h4>
-            <a href="#philosophy"><i class="fa fa-angle-down"></i></a>            
+            <div class="container">
+                <h1><img src="./files/img/WECKER_Logo.png" alt="${page_title}" style="width: 100%; margin-left: auto; margin-right: auto;"/></h1>
+                <h4>${page_statement}</h4>
+                <a href="#philosophy"><i class="fa fa-angle-down"></i></a>
+            </div>
         </section>
         <!-- CONTENT -->
         <section id="content">
-            <div id="philosophy">
-                <h2>${content_philosophy_heading}</h2>
-                ${content_philosophy}
+            <div id="philosophy" class="fullpage">
+                <div>
+                    <h2>${content_philosophy_heading}</h2>
+                    <span>${content_philosophy}</span>
+                </div>
             </div>
             <div id="persons">
                 ${_content_persons}
             </div>
             <div id="projects">
                 <h2>${content_projects_heading}</h2>
-                ${content_projects}
+                <span>${content_projects}</span>
                 ${_content_projects}
             </div>
             <div id="apply">
                 <h2>${content_apply_heading}</h2>
-                ${content_apply}
+                <span>${content_apply}</span>
                 ${_content_apply}
             </div>
         </section>
         <!-- FOOTER -->
         <section id="footer">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row" id="footer-links">
                     <div class="col-lg-3">
                         <div id="footer-logo">
                             <img src="./files/img/WECKER_Logo.png" alt="${footer_logo}" style="width: 100%;"/>
                         </div>
                         <div id="footer-nl">
-                            <input id="footer-nl-email"     name="email"  type="text"   placeholder="${footer_newsletter_email_placeholder}"/>
-                            <input id="footer-nl-subscribe" name="submit" type="submit" value="${footer_newsletter_email_value}"/>
+                            <input id="footer-nl-email"     class="form-control" name="email"  type="text"   placeholder="${footer_newsletter_email_placeholder}"/>
+                            <input id="footer-nl-subscribe" class="btn" name="submit" type="submit" value="${footer_newsletter_email_value}"/>
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -107,7 +111,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="footer-bottomline">
+            </div>
+            <div class="container-fluid" id="footer-bottomline">
+                <div class="row">
                     <div class="col-12">
                         ${footer_bottomline}
                     </div>

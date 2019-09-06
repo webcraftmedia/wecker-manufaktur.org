@@ -1,15 +1,16 @@
 $(document).ready(function() {
-      //new SYSTEM('./api.php',1,'start');
-      
-      $('.person-link').click(function(e){showPerson(e,$(this).attr('person'),false,true)})
+    //new SYSTEM('./api.php',1,'start');
+    
+    $('.person-link').click(function(e){showPerson(e,$(this).attr('person'),false,true)})
+    $('.project-link').click(function(e){showProject(e,$(this).attr('project'),false,true)})
 
-      $('.person-project-link').click(function(e){showProject(e,$(this).attr('project'),true,false)})
+    $('.person-link').hover(function(){hoverPerson($(this).attr('person'),true)},function(){hoverPerson($(this).attr('person'),false)});
+    $('.project-link').hover(function(){hoverProject($(this).attr('project'),true)},function(){hoverProject($(this).attr('project'),false)});
 
-      $('.project-link').click(function(e){showProject(e,$(this).attr('project'),false,true)})
+    $('.person-project-link').click(function(e){showProject(e,$(this).attr('project'),true,false)})
+    $('.project-person-link').click(function(e){showPerson(e,$(this).attr('person'),true,false)})
 
-      $('.project-person-link').click(function(e){showPerson(e,$(this).attr('person'),true,false)})
-
-      $("#apply-send").click(function(e){
+    $("#apply-send").click(function(e){
         e.preventDefault();
         var data =  {   name: $('#apply-name').val(),
                         email: $('#apply-email').val(),
@@ -34,6 +35,7 @@ $(document).ready(function() {
         sendMail(data,function(data){
             if(data && data.status){
                 $("#apply-message").val('')
+                $('#apply-message').trigger('keyup');
                 alert("Danke! Deine Nachricht wurde versendet.");
             } else {
                 alert("Deine Nachricht konnte nicht versendet weden. Bitte versuche es später noch einmal. Danke.");
@@ -42,8 +44,12 @@ $(document).ready(function() {
     });
 
     $('#apply-message').on('keyup',function(){
-        $('#apply-count').html($(this).val().length+'/500');
+        $('#apply-count').html($(this).val().length);
+        checkApply();
     });
+
+    $('#apply-name').on('keyup',checkApply)
+    $('#apply-email').on('keyup',checkApply)
 
     $('#footer-nl-subscribe').click(function(e){
         e.preventDefault();
@@ -78,76 +84,130 @@ $(document).ready(function() {
     });
 });
 
-function showPerson(event,subject_id,jump,toggle){
-      // Jump to anchor
-      if(!jump){
-            event.preventDefault();
-      }
-      
-      // Is the element already shown?
-      isHidden = $('#person-details-'+subject_id).hasClass('d-none');
+function checkApply(){
+    name = $('#apply-name').val(),
+    email = $('#apply-email').val(),
+    message = $('#apply-message').val();
 
-      // Grey out all
-      if(isHidden){
+    if (name.length >= 3 &&
+        validateEmail(email) &&
+        message.length <= 500 &&
+        message.length > 0){
+
+        $("#apply-send").removeClass('disabled');
+    } else {
+        $("#apply-send").addClass('disabled');
+    }
+}
+
+function hoverPerson(subject_id,hoverin){    
+    detailsShown = $('.person-details:not(.d-none)').length;
+
+    // Grey out all
+    if(!detailsShown){
+        if(hoverin){
             $('.person').addClass('disabled');
             $('#person-'+subject_id).removeClass('disabled');
-      } else {
+        } else {
             $('.person').removeClass('disabled');
-      }
-      // Hide all details
-      $('.person-details').addClass('d-none');
+        }
+    }
+}
 
-      // Toggle or ensure visibility of specific detail
-      console.log(toggle, isHidden)
-      if(!toggle || isHidden){
-            $('#person-details-'+subject_id).removeClass('d-none');
-      }
+function hoverProject(subject_id,hoverin){    
+    detailsShown = $('.project-details:not(.d-none)').length;
+
+    // Grey out all
+    if(!detailsShown){
+        if(hoverin){
+            $('.project').addClass('disabled');
+            $('#project-'+subject_id).removeClass('disabled');
+        } else {
+            $('.project').removeClass('disabled');
+        }
+    }
+}
+
+function showPerson(event,subject_id,jump,toggle){
+    // Jump to anchor
+    if(!jump){
+        event.preventDefault();
+    }
+
+    // Arrows
+    $('.person i').removeClass('fa-angle-up');
+    $('.person i').addClass('fa-angle-down');
+
+    // Is the element already shown?
+    isHidden = $('#person-details-'+subject_id).hasClass('d-none');
+
+    // Grey out all
+    if(isHidden){
+        $('.person').addClass('disabled');
+        $('#person-'+subject_id).removeClass('disabled');
+        $('#person-'+subject_id+' i').removeClass('fa-angle-down');
+        $('#person-'+subject_id+' i').addClass('fa-angle-up');
+    } else {
+        $('.person').removeClass('disabled');
+    }
+    // Hide all details
+    $('.person-details').addClass('d-none');
+
+    // Toggle or ensure visibility of specific detail
+    if(!toggle || isHidden){
+        $('#person-details-'+subject_id).removeClass('d-none');
+    }
 }
 
 function showProject(event,subject_id,jump,toggle){
-      // Jump to anchor
-      if(!jump){
-            event.preventDefault();
-      }
-      
-      // Is the element already shown?
-      isHidden = $('#project-details-'+subject_id).hasClass('d-none');
+    // Jump to anchor
+    if(!jump){
+        event.preventDefault();
+    }
 
-      // Grey out all others
-      if(isHidden){
-            $('.project').addClass('disabled');
-            $('#project-'+subject_id).removeClass('disabled');
-      } else {
-            $('.project').removeClass('disabled');
-      }
+    // Arrows
+    $('.project i').removeClass('fa-angle-up');
+    $('.project i').addClass('fa-angle-down');
+    
+    // Is the element already shown?
+    isHidden = $('#project-details-'+subject_id).hasClass('d-none');
 
-      // Hide all details
-      $('.project-details').addClass('d-none');
+    // Grey out all others
+    if(isHidden){
+        $('.project').addClass('disabled');
+        $('#project-'+subject_id).removeClass('disabled');
+        $('#project-'+subject_id+' i').removeClass('fa-angle-down');
+        $('#project-'+subject_id+' i').addClass('fa-angle-up');
+    } else {
+        $('.project').removeClass('disabled');
+    }
 
-      // Toggle or ensure visibility of specific detail
-      console.log(toggle, isHidden)
-      if(!toggle || isHidden){
-            $('#project-details-'+subject_id).removeClass('d-none');
-      }
+    // Hide all details
+    $('.project-details').addClass('d-none');
+
+    // Toggle or ensure visibility of specific detail
+    if(!toggle || isHidden){
+        $('#project-details-'+subject_id).removeClass('d-none');
+    }
 }
 
 function sendMail(data,callback){
-      $.ajax({
-          async: true,
-          url: './api.php',
-          type: 'GET',
-          dataType: 'JSON',
-          data: {
-              call: 'send_mail',
-              data: data
-          },
-          success: function(data){
-              callback(data);
-          },
-          error: function(){
-              callback(false);
-          }
-      });
+    $.ajax({
+        async: true,
+        url: './api.php',
+        type: 'GET',
+        dataType: 'JSON',
+        data: {
+            call: 'send_mail',
+            data: data
+        },
+        success: function(data){
+            callback(data);
+        },
+        error: function(){
+            callback(false);
+        }
+    });
   }
   
   function validateEmail(email) {

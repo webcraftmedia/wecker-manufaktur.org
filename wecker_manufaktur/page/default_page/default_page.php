@@ -13,6 +13,7 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
         return  \SYSTEM\HTML\html::link(\SYSTEM\CACHE\cache_css::minify(array(
                     \LIB\lib_bootstrap::css(),
                     \LIB\lib_font_awesome::css(),
+                    new PPAGE('default_page/css/font.css'),
                     new PPAGE('default_page/css/default_page.scss')
                 )));
     }

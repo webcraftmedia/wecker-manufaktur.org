@@ -5,11 +5,14 @@ $color_black: rgb(0,0,0);
 $color_green_1: rgb(12,22,11);
 $color_green_2: rgb(21,26,16);
 $color_green_3: rgb(29,48,25);
+$color_orange: #F5A623;
 
 // Distances
 $distance_huge: 250px;
 $distance_big: 100px;
+$distance_xlarge: 75px;
 $distance_large: 50px;
+$distance_xmedium: 30px;
 $distance_medium: 25px;
 $distance_small: 10px;
 
@@ -17,13 +20,22 @@ $distance_small: 10px;
 $home_img: url(./files/img/wecker_manufaktur.jpg);
 
 // Font Size
+$font_size_20: 20px;
+$font_size_25: 25px;
 $font_size_50: 50px;
 $font_size_70: 70px;
 
 
 body {
     color: $color_white;
+    font-family: 'sf-pro-light';
 }
+
+p{
+    padding:0;
+    margin:0;
+}
+
 
 .fullpage {
     min-height: 100vh;
@@ -37,16 +49,26 @@ body {
 #menu {
     padding-left: $distance_big;
     padding-right: $distance_big;
+    position: absolute;
+    width: 100%;
+}
+
+strong {
+    font-family: 'sf-pro-bold';
 }
 
 #home {
     background-image: $home_img;
     background-size: cover;
     text-align: center;
-    display: flex;
-    flex-direction: column;
     padding-left: $distance_big;
     padding-right: $distance_big;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
 
     h1{
         display: flex;
@@ -54,18 +76,25 @@ body {
         align-self: center;
         align-items: center;
         font-size: $font_size_70;
+        padding-top: $distance_large;
     }
 
     h4 {
         align-self: bottom;
+        font-size: $font_size_25
     }
 
     a{
         font-size: $font_size_50;
         color: $color_grey;
-        margin-top: -25px;
-        margin-bottom: -20px;
+        margin-top: -15px;
+        margin-bottom: $distance_small;
     }
+}
+
+.badge {
+    margin-right: $distance_small;
+    //height: 22px;
 }
 
 #content {
@@ -75,9 +104,21 @@ body {
     padding-right: $distance_big;
 
     #philosophy{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        div{
+            align-self: center;
+        }
+
         h2{
+            font-size: $font_size_50;
             padding-top: $distance_large;
             padding-bottom: $distance_medium;
+        }
+        span{
+            font-size: $font_size_25;
         }
     }
 
@@ -86,45 +127,81 @@ body {
         padding-bottom: $distance_medium;
 
         .person {
+            padding-top: $distance_xlarge;
+            padding-bottom: $distance_medium;
             img {
                 object-fit: cover;
-                width: 300px;
-                height: 300px;
+                width: $distance_huge;
+                height: $distance_huge;
             }
-            .disabled{
-                filter: grayscale(100%);
+            &.disabled{
+                opacity: 0.5;
+            }
+
+            .person-img-name {
+                padding-top: $distance_medium;
+                color: $color_white;
+                font-size: $font_size_20;
             }
         }
 
         .person-details{
             text-align: left;
+            padding-left: $distance_medium;
+            font-size: $font_size_20;
+            .table td, .table th {
+                border:0;
+            }
+            .badge {
+                font-size: $font_size_20;
+            }
         }
     }
 
     #projects{
+        padding-top: $distance_large;
+        padding-bottom: $distance_medium;
         h2{
+            font-size: $font_size_50;
             padding-top: $distance_large;
             padding-bottom: $distance_medium;
         }
+        span{
+            font-size: $font_size_25;
+        }
 
         .project{
+            padding-bottom: $distance_medium;
             img {
                 object-fit: cover;
-                width: 300px;
-                height: 300px;
+                width: $distance_huge;
+                height: $distance_huge;
             }
-            .disabled{
-                filter: grayscale(100%);
+            &.disabled{
+                opacity: 0.5;
+            }
+
+            .project-img-name {
+                padding-top: $distance_medium;
+                color: $color_white;
+                font-size: $font_size_20;
             }
         }
 
         .project-details{
             text-align: left;
-
+            padding-left: $distance_medium;
+            font-size: $font_size_20;
+            .table td, .table th {
+                border:0;
+            }
+            .badge {
+                font-size: $font_size_20;
+            }
             img {
                 object-fit: cover;
-                width: 75px;
-                height: 75px;
+                width: 50px;
+                height: 50px;
             }
         }
     }
@@ -132,9 +209,15 @@ body {
     #apply{
         padding-bottom: $distance_medium;
 
-        h2 {
+        h2{
+            font-size: $font_size_50;
             padding-top: $distance_large;
             padding-bottom: $distance_medium;
+        }
+        span{
+            font-size: $font_size_25;
+            padding-bottom: $distance_xlarge;
+            display: block;
         }
 
         input, textarea {
@@ -144,6 +227,7 @@ body {
             border: 0;
             padding: $distance_small;
             border-radius: $distance_small;
+            font-size: $font_size_20;
         }
 
         input::placeholder, textarea::placeholder{
@@ -161,10 +245,25 @@ body {
 
         #apply-send-box {
             text-align: left;
+            a {
+                color: $color_white;
+                font-size: $font_size_20;
+                &.disabled{
+                    pointer-events: none;
+                }
+            }
         }
 
         #apply-count-box {
             text-align: right;
+            font-size: $font_size_20;
+            padding-bottom: $distance_medium;
+            span{
+                font-size: $font_size_20;
+                font-weight: bold;
+                display: contents;
+                padding: 0;
+            }
         }
     }
 
@@ -178,20 +277,48 @@ body {
     }
 }
 
-#footer-links {
+#footer {
     background-color: $color_green_2;
-    padding-left: $distance_big;
-    padding-right: $distance_big;
-    padding-top: $distance_small;
-    padding-bottom: $distance_small;
-}
+    #footer-links {
+        padding-top: $distance_large;
+        padding-bottom: $distance_large;
+        #footer-nl-email{
+            margin-top: $distance_medium;
+            width: 100%;
+        }
+        #footer-nl-subscribe{
+            margin-top: $distance_small;
+            background-color: $color_orange;
+        }
+        a {
+            color: $color_white;
+            display: block;
+            font-size: $font_size_20;
+            margin-top: $distance_small;
+        }
+        #footer-sm{
+            display: flex;
+            a > i {
+                font-size: 26px;
+                color: #fff;
+                padding-top: 10px;
+                border: #fff 2px solid;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                text-align: center;
+                margin-right: $distance_small;
+            }
+        }
+    }
 
-#footer-bottomline {
-    background-color: $color_black;
-    padding: $distance_small;
-    padding-left: $distance_big;
-    padding-right: $distance_big;
-    text-align: center;
+    #footer-bottomline {
+        background-color: $color_black;
+        padding: $distance_small;
+        padding-left: $distance_big;
+        padding-right: $distance_big;
+        text-align: center;
+    }
 }
 
 .modal {

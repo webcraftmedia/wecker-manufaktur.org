@@ -3,7 +3,7 @@
         <div>
             <img src="./files/projects/${img}" class="rounded" alt="${name}">
         </div>
-        <div>
+        <div class="project-img-name">
             ${name} <i class="fa fa-angle-down"></i>
         </div>
     </a>

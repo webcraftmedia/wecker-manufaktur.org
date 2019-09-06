@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'sf-pro-bold';
+    src: url('./files/font/SanFranciscoDisplay-Bold.otf') format('truetype');
+}
+@font-face {
+    font-family: 'sf-pro-light';
+    src: url('./files/font/SanFranciscoDisplay-Light.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'sf-pro-semibold';
+  src: url('./files/font/SanFranciscoDisplay-Semibold.otf') format('truetype');
+}
