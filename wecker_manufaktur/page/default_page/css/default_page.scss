@@ -209,8 +209,7 @@ strong {
     }
 
     #projects{
-        padding: $distance_small;
-        padding-top: $distance_large;
+        padding-top: $distance_big;
         padding-bottom: $distance_large;
         h2{
             font-size: $font_size_50;
@@ -222,7 +221,7 @@ strong {
         }
 
         .project{
-            padding-bottom: $distance_medium;
+            padding-bottom: $distance_big;
             img {
                 object-fit: cover;
                 width: $distance_huge;
@@ -258,7 +257,7 @@ strong {
     }
 
     #apply{
-        padding: $distance_small;
+        padding-top: $distance_big;
         padding-bottom: $distance_large;
 
         h2{
