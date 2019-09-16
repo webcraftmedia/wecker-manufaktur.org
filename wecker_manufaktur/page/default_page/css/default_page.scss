@@ -58,6 +58,25 @@ p{
     padding-right: $distance_big;
     position: absolute;
     width: 100%;
+
+    .navbar-toggler{
+        right: $distance_small;
+        top: 15px;
+        position: absolute;
+        color: #FFF;
+        border-color: rgb(255,255,255);
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+    }
+    @media (max-width: $breakpoint_s) {
+        .navbar-collapse{
+            position: absolute;
+            right: $distance_small;
+            top: 65px;
+        }    
+    }
 }
 
 strong {
@@ -120,6 +139,9 @@ strong {
 
 .badge {
     margin-right: $distance_small;
+    margin-bottom: $distance_small;
+    font-family: 'sf-pro-light';
+    font-size: 17px !important;
     //height: 22px;
 }
 
@@ -132,6 +154,7 @@ strong {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        padding: $distance_small;
         div{
             align-self: center;
         }
@@ -150,9 +173,9 @@ strong {
     }
 
     #persons{
+        padding: $distance_small;
         padding-top: $distance_large;
         padding-bottom: $distance_medium;
-
         .person {
             padding-top: $distance_xlarge;
             padding-bottom: $distance_medium;
@@ -186,8 +209,9 @@ strong {
     }
 
     #projects{
+        padding: $distance_small;
         padding-top: $distance_large;
-        padding-bottom: $distance_medium;
+        padding-bottom: $distance_large;
         h2{
             font-size: $font_size_50;
             padding-top: $distance_large;
@@ -234,7 +258,8 @@ strong {
     }
 
     #apply{
-        padding-bottom: $distance_medium;
+        padding: $distance_small;
+        padding-bottom: $distance_large;
 
         h2{
             font-size: $font_size_50;
