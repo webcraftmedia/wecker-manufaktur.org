@@ -48,7 +48,7 @@
         <!-- HOME -->
         <section id="home" class="fullpage">
             <div class="container">
-                <h1><img src="./files/img/WECKER_Logo.png" alt="${page_title}" style="width: 100%; margin-left: auto; margin-right: auto;"/></h1>
+                <h1><img src="./files/img/WECKER_Logo.png" alt="${page_title}"/></h1>
                 <h4>${page_statement}</h4>
                 <a href="#philosophy"><i class="fa fa-angle-down"></i></a>
             </div>
@@ -69,7 +69,7 @@
                 <span>${content_projects}</span>
                 ${_content_projects}
             </div>
-            <div id="apply">
+            <div id="apply" class="fullpage">
                 <h2>${content_apply_heading}</h2>
                 <span>${content_apply}</span>
                 ${_content_apply}
@@ -81,7 +81,7 @@
                 <div class="row" id="footer-links">
                     <div class="col-lg-3">
                         <div id="footer-logo">
-                            <img src="./files/img/WECKER_Logo.png" alt="${footer_logo}" style="width: 100%;"/>
+                            <img src="./files/img/WECKER_Logo.png" alt="${footer_logo}"/>
                         </div>
                         <div id="footer-nl">
                             <input id="footer-nl-email"     class="form-control" name="email"  type="text"   placeholder="${footer_newsletter_email_placeholder}"/>

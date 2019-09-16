@@ -8,6 +8,8 @@ $color_green_3: rgb(29,48,25);
 $color_orange: #F5A623;
 
 // Distances
+$distance_immense: 700px;
+$distance_xhuge: 350px;
 $distance_huge: 250px;
 $distance_big: 100px;
 $distance_xlarge: 75px;
@@ -22,9 +24,14 @@ $home_img: url(./files/img/wecker_manufaktur.jpg);
 // Font Size
 $font_size_20: 20px;
 $font_size_25: 25px;
+$font_size_40: 40px;
 $font_size_50: 50px;
 $font_size_70: 70px;
 
+// Breakpoints
+$breakpoint_s: 768px;
+$breakpoint_m: 992px;
+$breakpoint_l: 1200px;
 
 body {
     color: $color_white;
@@ -60,6 +67,9 @@ strong {
 #home {
     background-image: $home_img;
     background-size: cover;
+    @media (max-width: $breakpoint_m) {
+        background-position: -600px 0px;
+    }
     text-align: center;
     padding-left: $distance_big;
     padding-right: $distance_big;
@@ -77,11 +87,27 @@ strong {
         align-items: center;
         font-size: $font_size_70;
         padding-top: $distance_large;
+        img {
+            @media (max-width: $breakpoint_m) {
+                width: $distance_xhuge;
+            }
+            @media (min-width: $breakpoint_m) {
+                width: $distance_immense;    
+            }
+            
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     h4 {
         align-self: bottom;
-        font-size: $font_size_25
+        @media (max-width: $breakpoint_m) {
+            font-size: $font_size_20
+        }
+        @media (min-width: $breakpoint_m) {
+            font-size: $font_size_25;
+        }
     }
 
     a{
@@ -100,8 +126,6 @@ strong {
 #content {
     background-image: linear-gradient($color_green_1,$color_green_3);
     text-align: center;
-    padding-left: $distance_big;
-    padding-right: $distance_big;
 
     #philosophy{
         text-align: center;
@@ -113,12 +137,15 @@ strong {
         }
 
         h2{
-            font-size: $font_size_50;
+            font-size: $font_size_40;
             padding-top: $distance_large;
             padding-bottom: $distance_medium;
         }
         span{
-            font-size: $font_size_25;
+            font-size: $font_size_20;
+            p {
+                margin-top: $distance_xmedium;
+            }
         }
     }
 
@@ -279,12 +306,23 @@ strong {
 
 #footer {
     background-color: $color_green_2;
+    .col-lg-3{
+        @media (max-width: $breakpoint_m) {
+            padding-top: $distance_xmedium;
+        }
+    }
     #footer-links {
         padding-top: $distance_large;
         padding-bottom: $distance_large;
+        #footer-logo {
+            img {
+                width: 90%;
+            }
+        }
+
         #footer-nl-email{
             margin-top: $distance_medium;
-            width: 100%;
+            width: 90%;
         }
         #footer-nl-subscribe{
             margin-top: $distance_small;
@@ -315,9 +353,11 @@ strong {
     #footer-bottomline {
         background-color: $color_black;
         padding: $distance_small;
-        padding-left: $distance_big;
-        padding-right: $distance_big;
         text-align: center;
+        @media (min-width: $breakpoint_m) {
+            padding-left: $distance_big;
+            padding-right: $distance_big;
+        }
     }
 }
 
