@@ -21,9 +21,8 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
     private static function getPersons(){
         $result = '';
 
-        $column_counter     = 0;
-        $_content_imgs      = '';
-        $_content_details   = '';
+        $column_counter = 0;
+        $content        = '';
 
         $persons        = \SQL\SELECT_PERSONS_VISIBLE::QQ();
         $person_badges  = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PERSON_ABILITIES));   // This part we filter phpside due to performance.
@@ -46,24 +45,20 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
             }
             $row['projects'] = substr($row['projects'],0,-3);
 
-            $_content_imgs      .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person_img.tpl'))->SERVERPATH(),$row);
-            $_content_details   .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person_details.tpl'))->SERVERPATH(),$row);
+            $content      .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/person.tpl'))->SERVERPATH(),$row);
 
             // Insert full row and start a new row
             if($column_counter++ === 2){
                 $result .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_row.tpl'))->SERVERPATH(),
-                                                            array(  '_content_imgs'     => $_content_imgs,
-                                                                    '_content_details'  => $_content_details));
-                $column_counter     = 0;
-                $_content_imgs      = '';
-                $_content_details   = '';
+                                                            array(  'content'     => $content));
+                $column_counter = 0;
+                $content        = '';
             }
         }
         // Insert incomplete rows
         if($column_counter != 0){
             $result .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_row.tpl'))->SERVERPATH(),
-                                                            array(  '_content_imgs'     => $_content_imgs,
-                                                                    '_content_details'  => $_content_details));
+                                                            array(  'content'     => $content));
         }
 
         return $result;
@@ -72,9 +67,8 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
     private static function getProjects(){
         $result = '';
 
-        $column_counter     = 0;
-        $_content_imgs      = '';
-        $_content_details   = '';
+        $column_counter = 0;
+        $content        = '';
 
         $projects       = \SQL\SELECT_PROJECTS_VISIBLE::QQ();
         $project_focus  = \SQL\SELECT_BADGES_VISIBLE::QA(array(\SAI\saimod_project::BADGE_TYPE_PROJECT_FOCUS)); // This part we filter phpside due to performance.
@@ -100,24 +94,20 @@ class default_page implements \SYSTEM\PAGE\DefaultPage {
                 $row['persons'] .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/project_person.tpl'))->SERVERPATH(),$person);
             }
 
-            $_content_imgs      .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/project_img.tpl'))->SERVERPATH(),$row);
-            $_content_details   .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/project_details.tpl'))->SERVERPATH(),$row);
+            $content      .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/project.tpl'))->SERVERPATH(),$row);
 
             // Insert full row and start a new row
             if($column_counter++ === 2){
                 $result .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_row.tpl'))->SERVERPATH(),
-                                                            array(  '_content_imgs'     => $_content_imgs,
-                                                                    '_content_details'  => $_content_details));
-                $column_counter     = 0;
-                $_content_imgs      = '';
-                $_content_details   = '';
+                                                            array(  'content'     => $content));
+                $column_counter = 0;
+                $content        = '';
             }
         }
         // Insert incomplete rows
         if($column_counter != 0){
             $result .= \SYSTEM\PAGE\replace::replaceFile((new PPAGE('default_page/tpl/content_row.tpl'))->SERVERPATH(),
-                                                            array(  '_content_imgs'     => $_content_imgs,
-                                                                    '_content_details'  => $_content_details));
+                                                            array(  'content'     => $content));
         }
 
         return $result;

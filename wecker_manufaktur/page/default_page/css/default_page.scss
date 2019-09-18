@@ -221,7 +221,8 @@ strong {
         }
 
         .project{
-            padding-bottom: $distance_big;
+            padding-top: $distance_xlarge;
+            padding-bottom: $distance_medium;
             img {
                 object-fit: cover;
                 width: $distance_huge;
