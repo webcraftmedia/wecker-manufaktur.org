@@ -91,9 +91,10 @@ strong {
 #home {
     background-image: $home_img;
     background-size: cover;
-    @media (max-width: $breakpoint_m) {
-        background-position: -600px 0px;
-    }
+    background-repeat: no-repeat;
+    //@media (max-width: $breakpoint_m) {
+    //    background-position: -600px 0px;
+    //}
     text-align: center;
     padding-left: $distance_big;
     padding-right: $distance_big;
