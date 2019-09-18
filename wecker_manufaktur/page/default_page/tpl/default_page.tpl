@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="container-fluid" id="footer-bottomline">
-                <div class="row">
+                <div class="row-fluid">
                     <div class="col-12">
                         ${footer_bottomline}
                     </div>

@@ -36,6 +36,7 @@ $breakpoint_l: 1200px;
 body {
     color: $color_white;
     font-family: 'sf-pro-light';
+    min-width: 300px;
 }
 
 p{
@@ -51,6 +52,10 @@ p{
 
 .nav-link {
     color: $color_white !important;
+}
+
+.break-tr {
+    word-break: break-all;
 }
 
 #menu {

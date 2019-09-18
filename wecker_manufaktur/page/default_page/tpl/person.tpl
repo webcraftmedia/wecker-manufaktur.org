@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th scope="row">${table_info}</th>
-                <td>${info}</td>
+                <td class="break-tr">${info}</td>
             </tr>
             <tr>
                 <th scope="row">${table_projects}</th>
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <th scope="row">${table_contact}</th>
-                <td>${contact}</td>
+                <td class="break-tr">${contact}</td>
             </tr>
         </table>
     </div>

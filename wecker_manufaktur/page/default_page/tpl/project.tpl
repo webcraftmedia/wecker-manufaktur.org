@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <th scope="row">${table_info}</th>
-                    <td>${info}</td>
+                    <td class="break-tr">${info}</td>
                 </tr>
                 <tr>
                     <th scope="row">${table_involved}</th>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <th scope="row">${table_website}</th>
-                    <td><a href="${website}" target="_blank">${website}</a></td>
+                    <td class="break-tr"><a href="${website}" target="_blank">${website}</a></td>
                 </tr>
             </table>
         </div>
