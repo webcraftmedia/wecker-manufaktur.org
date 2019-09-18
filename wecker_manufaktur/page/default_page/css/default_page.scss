@@ -20,6 +20,7 @@ $distance_small: 10px;
 
 // Images
 $home_img: url(./files/img/wecker_manufaktur.jpg);
+$home_img_mobile: url(./files/img/wecker_manufaktur.mobile.png);
 
 // Font Size
 $font_size_20: 20px;
@@ -36,7 +37,7 @@ $breakpoint_l: 1200px;
 body {
     color: $color_white;
     font-family: 'sf-pro-light';
-    min-width: 300px;
+    min-width: 400px;
 }
 
 p{
@@ -92,9 +93,9 @@ strong {
     background-image: $home_img;
     background-size: cover;
     background-repeat: no-repeat;
-    //@media (max-width: $breakpoint_m) {
-    //    background-position: -600px 0px;
-    //}
+    @media (max-width: $breakpoint_m) {
+        background-image: $home_img_mobile;
+    }
     text-align: center;
     padding-left: $distance_big;
     padding-right: $distance_big;
