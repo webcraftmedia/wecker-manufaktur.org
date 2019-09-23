@@ -72,8 +72,8 @@ $(document).ready(function() {
                     if(!data.status){
                         alert("Das Eintragen in den Newsletter hat leider nicht funktioniert. Bitte versuche es später noch einmal. Danke.");
                     } else {
-                        $('#confirm').show();
-                        $('#formular').hide();
+                        $('#footer-nl-success').removeClass('d-none');
+                        $('#footer-nl').addClass('d-none');
                     }
                 },
                 error: function(){

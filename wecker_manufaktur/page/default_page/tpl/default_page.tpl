@@ -87,6 +87,9 @@
                             <input id="footer-nl-email"     class="form-control" name="email"  type="text"   placeholder="${footer_newsletter_email_placeholder}"/>
                             <input id="footer-nl-subscribe" class="btn" name="submit" type="submit" value="${footer_newsletter_email_value}"/>
                         </div>
+                        <div id="footer-nl-success" class="d-none">
+                            ${footer_subscribe_success}
+                        </div>
                     </div>
                     <div class="col-lg-3">
                         <h3>${footer_legal_heading}</h3>
