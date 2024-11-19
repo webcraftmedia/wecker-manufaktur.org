@@ -108,8 +108,8 @@
                     <div class="col-lg-3 footer-sm">
                         <h3>${footer_socialmedia_heading}</h3>
                         <div id="footer-sm">
-                            <a target="_blank" href="${link_facebook}"><i class="fa fa-facebook"></i></a>
-                            <a target="_blank" href="${link_discord}"> <i class="fa fa-weixin"></i></a>
+                            <a target="_blank" href="${link_facebook}"><i class="fab fa-facebook-f"></i></a>
+                            <a target="_blank" href="${link_discord}"> <i class="fab fa-weixin"></i></a>
                             <a target="_blank" href="${link_email}">   <i class="fa fa-envelope"></i></a>
                         </div>
                     </div>
