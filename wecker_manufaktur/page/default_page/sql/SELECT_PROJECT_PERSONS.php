@@ -20,7 +20,7 @@ class SELECT_PROJECT_PERSONS extends \SYSTEM\DB\QQ {
      * 
      * @return string Returns classname
      */
-    public static function get_class(){return \get_class();}
+    public static function get_class(){return static::class;}
     
     /**
      * Get QQs MYSQL Query String
