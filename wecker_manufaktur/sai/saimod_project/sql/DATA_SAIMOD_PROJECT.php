@@ -1,7 +1,7 @@
 <?php
 namespace SQL;
 class DATA_SAIMOD_PROJECT extends \SYSTEM\DB\QI {
-    public static function get_class(){return \get_class();}
+    public static function get_class(){return static::class;}
     public static function files_mysql(){
         return array(   (new \SAI\PPROJECT('sql/mysql/system_page.sql'))->SERVERPATH(),
                         (new \SAI\PPROJECT('sql/mysql/system_api.sql'))->SERVERPATH(),
