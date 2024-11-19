@@ -1,4 +1,4 @@
 <?php
-include 'autoload.inc';
+include 'index.inc';
 
 echo (new \SYSTEM\SAI\sai_gui())->html();
